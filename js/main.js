@@ -1,14 +1,14 @@
 /**
  * SELBY MV - MAIN JAVASCRIPT
  * Handles: loader, hero slider, mobile menu, scroll-to-top,
- *          animations, and form submission
+ *          animations, form submission, WhatsApp links, touch fixes
  */
 (function () {
     'use strict';
 
     // ==================== LOADER ====================
     function removeLoader() {
-        const loader = document.getElementById('load');
+        var loader = document.getElementById('load');
         if (loader && !loader.classList.contains('loader-removed')) {
             setTimeout(function () {
                 loader.classList.add('loader-removed');
@@ -17,28 +17,26 @@
         }
     }
 
-    // Remove loader after page is ready
     window.addEventListener('load', function () {
-        // Ensure loader shows for at least 400ms
         setTimeout(removeLoader, 400);
     });
 
-    // Fallback: remove loader after 3 seconds max
     setTimeout(removeLoader, 3000);
 
     // ==================== HERO SLIDER ====================
     function initHeroSlider() {
-        const slides = document.querySelectorAll('.hero-slide');
-        const dotsContainer = document.querySelector('.hero-dots');
+        var slides = document.querySelectorAll('.hero-slide');
+        var dotsContainer = document.querySelector('.hero-dots');
+        var heroSlider = document.getElementById('hero');
 
         if (slides.length === 0) return;
 
-        let currentSlide = 0;
-        let slideInterval = null;
+        var currentSlide = 0;
+        var slideInterval = null;
 
-        // Create navigation dots
+        // Create dots
         slides.forEach(function (_, index) {
-            const dot = document.createElement('button');
+            var dot = document.createElement('button');
             dot.classList.add('hero-dot');
             dot.setAttribute('aria-label', 'Slide ' + (index + 1));
             dot.addEventListener('click', function () {
@@ -47,25 +45,23 @@
             dotsContainer.appendChild(dot);
         });
 
-        const dots = document.querySelectorAll('.hero-dot');
+        var dots = document.querySelectorAll('.hero-dot');
 
         function goToSlide(index) {
             slides[currentSlide].classList.remove('active');
             dots[currentSlide].classList.remove('active');
-
             currentSlide = index;
-
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
         }
 
         function nextSlide() {
-            const next = (currentSlide + 1) % slides.length;
+            var next = (currentSlide + 1) % slides.length;
             goToSlide(next);
         }
 
         function prevSlide() {
-            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            var prev = (currentSlide - 1 + slides.length) % slides.length;
             goToSlide(prev);
         }
 
@@ -81,66 +77,65 @@
             }
         }
 
-        // Initialize first slide
         goToSlide(0);
         startAutoplay();
 
-        // Pause on hover
-        const heroSlider = document.getElementById('hero');
         if (heroSlider) {
             heroSlider.addEventListener('mouseenter', stopAutoplay);
             heroSlider.addEventListener('mouseleave', startAutoplay);
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-            }
+            if (e.key === 'ArrowLeft') prevSlide();
+            else if (e.key === 'ArrowRight') nextSlide();
         });
 
-        // Touch swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
+        // Touch swipe support with scroll prevention
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var touchEndX = 0;
+        var isSwiping = false;
 
         heroSlider.addEventListener('touchstart', function (e) {
             touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+            isSwiping = true;
         }, { passive: true });
+
+        heroSlider.addEventListener('touchmove', function (e) {
+            if (isSwiping) {
+                var diffX = e.changedTouches[0].screenX - touchStartX;
+                var diffY = e.changedTouches[0].screenY - touchStartY;
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 7 && e.cancelable) {
+                    e.preventDefault();
+                }
+            }
+        }, { passive: false });
 
         heroSlider.addEventListener('touchend', function (e) {
             touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
+            var diff = touchStartX - touchEndX;
+            var diffY = Math.abs(e.changedTouches[0].screenY - touchStartY);
 
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    nextSlide(); // Swipe left
-                } else {
-                    prevSlide(); // Swipe right
-                }
+            if (Math.abs(diff) > 50 && diffY < 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
             }
-        }
+            isSwiping = false;
+        });
     }
 
     // ==================== MOBILE MENU ====================
     function initMobileMenu() {
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        const nav = document.querySelector('.main-navigation');
+        var toggle = document.querySelector('.mobile-menu-toggle');
+        var nav = document.querySelector('.main-navigation');
 
         if (!toggle || !nav) return;
 
         toggle.addEventListener('click', function () {
-            const isOpen = nav.classList.toggle('open');
+            var isOpen = nav.classList.toggle('open');
             toggle.setAttribute('aria-expanded', isOpen);
-
-            // Animate hamburger
-            const spans = toggle.querySelectorAll('span');
+            var spans = toggle.querySelectorAll('span');
             if (isOpen) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
                 spans[1].style.opacity = '0';
@@ -152,25 +147,23 @@
             }
         });
 
-        // Close menu when clicking a link
-        const menuLinks = nav.querySelectorAll('a');
+        var menuLinks = nav.querySelectorAll('a');
         menuLinks.forEach(function (link) {
             link.addEventListener('click', function () {
                 nav.classList.remove('open');
                 toggle.setAttribute('aria-expanded', 'false');
-                const spans = toggle.querySelectorAll('span');
+                var spans = toggle.querySelectorAll('span');
                 spans[0].style.transform = '';
                 spans[1].style.opacity = '';
                 spans[2].style.transform = '';
             });
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', function (e) {
             if (!toggle.contains(e.target) && !nav.contains(e.target)) {
                 nav.classList.remove('open');
                 toggle.setAttribute('aria-expanded', 'false');
-                const spans = toggle.querySelectorAll('span');
+                var spans = toggle.querySelectorAll('span');
                 spans[0].style.transform = '';
                 spans[1].style.opacity = '';
                 spans[2].style.transform = '';
@@ -180,78 +173,55 @@
 
     // ==================== SCROLL TO TOP ====================
     function initScrollTop() {
-        const scrollBtn = document.getElementById('scrollTop');
-
+        var scrollBtn = document.getElementById('scrollTop');
         if (!scrollBtn) return;
 
         function toggleVisibility() {
-            if (window.scrollY > 400) {
-                scrollBtn.classList.add('visible');
-            } else {
-                scrollBtn.classList.remove('visible');
-            }
+            if (window.scrollY > 400) scrollBtn.classList.add('visible');
+            else scrollBtn.classList.remove('visible');
         }
 
         window.addEventListener('scroll', toggleVisibility, { passive: true });
-
         scrollBtn.addEventListener('click', function () {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-        // Initial check
         toggleVisibility();
     }
 
     // ==================== SCROLL ANIMATIONS ====================
     function initScrollAnimations() {
-        const animatedElements = document.querySelectorAll('.fade-in-up');
-
+        var animatedElements = document.querySelectorAll('.fade-in-up');
         if (animatedElements.length === 0) return;
 
-        const observer = new IntersectionObserver(
+        var observer = new IntersectionObserver(
             function (entries) {
                 entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             },
-            {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            }
+            { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
         );
 
-        animatedElements.forEach(function (el) {
-            observer.observe(el);
-        });
+        animatedElements.forEach(function (el) { observer.observe(el); });
     }
 
     // ==================== CONTACT FORM ====================
     function initContactForm() {
-        const form = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const formMessage = document.getElementById('form-message');
+        var form = document.getElementById('contactForm');
+        var submitBtn = document.getElementById('submitBtn');
+        var formMessage = document.getElementById('form-message');
 
         if (!form || !submitBtn) return;
 
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(form);
-            const data = {
+            var formData = new FormData(form);
+            var data = {
                 name: formData.get('name'),
                 email: formData.get('email'),
-                message: formData.get('message'),
-                _gotcha: formData.get('_gotcha'),
-                _subject: formData.get('_subject')
+                message: formData.get('message')
             };
 
-            // Basic validation
             if (!data.name || !data.email || !data.message) {
                 showFormMessage('Please fill in all fields.', 'error');
                 return;
@@ -262,45 +232,31 @@
                 return;
             }
 
-            // Show loading state
             submitBtn.classList.add('loading');
             submitBtn.disabled = true;
 
             try {
-                // If no Formspree ID is set, show a demo message
-                const action = form.getAttribute('action');
+                var action = form.getAttribute('action');
                 if (action.includes('YOUR-FORM-ID')) {
-                    // Demo mode - simulate success
-                    await new Promise(resolve => setTimeout(resolve, 1500));
-                    showFormMessage(
-                        '✅ Demo mode: Form would be sent here. Replace YOUR-FORM-ID with your actual Formspree endpoint.',
-                        'success'
-                    );
+                    await new Promise(function (resolve) { return setTimeout(resolve, 1500); });
+                    showFormMessage('✅ Demo mode: Form would be sent here. Replace YOUR-FORM-ID with your actual Formspree endpoint.', 'success');
                     form.reset();
                 } else {
-                    // Actually submit to Formspree
-                    const response = await fetch(action, {
+                    var response = await fetch(action, {
                         method: 'POST',
                         body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        headers: { 'Accept': 'application/json' }
                     });
-
                     if (response.ok) {
                         showFormMessage('Thank you! Your message has been sent. We will get back to you soon.', 'success');
                         form.reset();
                     } else {
-                        const result = await response.json();
+                        var result = await response.json();
                         throw new Error(result.error || 'Something went wrong.');
                     }
                 }
             } catch (error) {
-                showFormMessage(
-                    'Sorry, there was a problem sending your message. Please try again or email us directly at sales@selbymv.com.',
-                    'error'
-                );
-                console.error('Form submission error:', error);
+                showFormMessage('Sorry, there was a problem sending your message. Please try again or email us directly at sales@selbymv.com.', 'error');
             } finally {
                 submitBtn.classList.remove('loading');
                 submitBtn.disabled = false;
@@ -312,29 +268,20 @@
             formMessage.textContent = msg;
             formMessage.className = 'form-feedback ' + type;
             formMessage.style.display = 'block';
-
-            // Auto hide after 8 seconds
-            setTimeout(function () {
-                formMessage.style.display = 'none';
-            }, 8000);
+            setTimeout(function () { formMessage.style.display = 'none'; }, 8000);
         }
 
         function isValidEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
     }
 
     // ==================== WHATSAPP LINK FIXER ====================
     function fixWhatsAppLinks() {
-        // Switch between web.whatsapp.com and api.whatsapp.com based on device
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|Windows Phone|IEMobile|Mobile|BlackBerry/i.test(
-            navigator.userAgent
-        );
-
-        const links = document.querySelectorAll('a[href*="whatsapp.com"]');
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|Windows Phone|IEMobile|Mobile|BlackBerry/i.test(navigator.userAgent);
+        var links = document.querySelectorAll('a[href*="whatsapp.com"]');
         links.forEach(function (link) {
-            let href = link.getAttribute('href');
+            var href = link.getAttribute('href');
             if (isMobile && href.includes('web.whatsapp.com')) {
                 link.setAttribute('href', href.replace('web.whatsapp.com', 'api.whatsapp.com'));
             } else if (!isMobile && href.includes('api.whatsapp.com')) {
@@ -343,11 +290,10 @@
         });
     }
 
-    // ==================== STICKY HEADER SHADOW ====================
+    // ==================== STICKY HEADER ====================
     function initStickyHeader() {
-        const header = document.querySelector('.masthead');
+        var header = document.querySelector('.masthead');
         if (!header) return;
-
         window.addEventListener('scroll', function () {
             if (window.scrollY > 10) {
                 header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
@@ -357,7 +303,7 @@
         }, { passive: true });
     }
 
-    // ==================== INITIALIZATION ====================
+    // ==================== INIT ====================
     function init() {
         removeLoader();
         initHeroSlider();
@@ -369,7 +315,6 @@
         fixWhatsAppLinks();
     }
 
-    // Run when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
