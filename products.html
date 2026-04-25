@@ -184,4 +184,110 @@
 
         function selectCategory(cat,name,btn){
             activeCategory=cat;activeCategoryName=name;
-            document.getElementById('currentCategoryLabel').textContent
+            document.getElementById('currentCategoryLabel').textContent=name;
+            document.getElementById('breadcrumbCategory').textContent=name;
+            document.getElementById('categoryDropdown').classList.remove('open');
+            document.querySelectorAll('.category-option').forEach(function(b){b.classList.remove('active');});
+            if(btn)btn.classList.add('active');
+            var url=new URL(window.location);
+            if(cat==='all'){url.searchParams.delete('category');}
+            else{url.searchParams.set('category',cat);}
+            window.history.replaceState({},'',url);
+            filterProducts();
+        }
+
+        function filterProducts(){
+            var search=document.getElementById('productSearch').value.toLowerCase();
+            var filtered=products.filter(function(p){
+                if(activeCategory!=='all'&&p.category!==activeCategory)return false;
+                if(search&&!p.name.toLowerCase().includes(search)&&!p.id.toLowerCase().includes(search)&&!p.catName.toLowerCase().includes(search))return false;
+                return true;
+            });
+            renderProducts(filtered);
+        }
+
+        function renderProducts(arr){
+            document.getElementById('resultCount').textContent=arr.length;
+            var grid=document.getElementById('productGrid');
+            if(arr.length===0){grid.innerHTML='<div class="no-products"><p>No products found.</p><p>Try a different search or <a href="contact-us.html">contact us</a>.</p></div>';return;}
+            grid.innerHTML=arr.map(function(p,index){
+                var sl=p.stock==='in'?'In Stock':p.stock==='low'?'Low Stock':'Out of Stock';
+                var sc=p.stock==='in'?'in-stock':p.stock==='low'?'low-stock':'out-stock';
+                var pf='MVR '+p.price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+                return '<div class="product-card-veligaa fade-in-up">'+
+                    '<div class="product-card-img-wrap">'+
+                        '<a href="javascript:void(0)" class="product-card-img-link" onclick="openProductPopup('+index+')"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"></a>'+
+                        '<span class="stock-badge-veligaa '+sc+'">'+sl+'</span>'+
+                    '</div>'+
+                    '<div class="product-card-info">'+
+                        '<span class="product-sku-veligaa">'+p.id+'</span>'+
+                        '<h3 class="product-name-veligaa"><a href="javascript:void(0)" onclick="openProductPopup('+index+')" style="color:#303030;text-decoration:none;">'+p.name+'</a></h3>'+
+                        '<p class="product-price-veligaa">'+pf+'</p>'+
+                        '<div class="product-actions-veligaa">'+
+                            '<a href="https://api.whatsapp.com/send?phone=9603323002&text=I\'m%20interested%20in%20'+encodeURIComponent(p.name)+'%20('+p.id+')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>'+
+                            '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>';
+            }).join('');
+        }
+
+        // Product Popup
+        function openProductPopup(index){
+            var p=products[index];
+            var sl=p.stock==='in'?'In Stock':p.stock==='low'?'Low Stock':'Out of Stock';
+            var sc=p.stock==='in'?'in-stock':p.stock==='low'?'low-stock':'out-stock';
+            var pf='MVR '+p.price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+            var specsHtml=p.specs.map(function(s){return '<li>'+s+'</li>';}).join('');
+            var html='<div class="popup-layout">'+
+                '<div class="popup-image"><img src="'+p.image+'" alt="'+p.name+'"></div>'+
+                '<div class="popup-details">'+
+                    '<span class="stock-badge-veligaa '+sc+'" style="position:static;display:inline-block;margin-bottom:10px;">'+sl+'</span>'+
+                    '<h2>'+p.name+'</h2>'+
+                    '<p class="popup-sku">'+p.id+'</p>'+
+                    '<p class="popup-price">'+pf+'</p>'+
+                    '<div class="popup-section"><h3>Description</h3><p>'+p.desc+'</p></div>'+
+                    '<div class="popup-section"><h3>Specifications</h3><ul class="popup-specs">'+specsHtml+'</ul></div>'+
+                    '<div class="popup-actions">'+
+                        '<a href="https://api.whatsapp.com/send?phone=9603323002&text=I\'m%20interested%20in%20'+encodeURIComponent(p.name)+'%20('+p.id+')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp Enquiry</a>'+
+                        '<a href="tel:+9603328583" class="btn-call-veligaa"> Call Now</a>'+
+                    '</div>'+
+                '</div>'+
+            '</div>';
+            document.getElementById('popupBody').innerHTML=html;
+            document.getElementById('productPopup').classList.add('open');
+            document.body.style.overflow='hidden';
+        }
+
+        function closeProductPopup(event){
+            if(event&&event.target!==document.getElementById('productPopup'))return;
+            document.getElementById('productPopup').classList.remove('open');
+            document.body.style.overflow='';
+        }
+
+        // Init from URL
+        (function(){
+            var params=new URLSearchParams(window.location.search);
+            var catParam=params.get('category');
+            if(catParam){
+                var buttons=document.querySelectorAll('.category-option');
+                buttons.forEach(function(btn){
+                    var onclickAttr=btn.getAttribute('onclick')||'';
+                    if(onclickAttr.indexOf("'"+catParam+"'")!==-1){
+                        activeCategory=catParam;
+                        var label=btn.textContent.trim();
+                        document.getElementById('currentCategoryLabel').textContent=label;
+                        document.getElementById('breadcrumbCategory').textContent=label;
+                        buttons.forEach(function(b){b.classList.remove('active');});
+                        btn.classList.add('active');
+                    }
+                });
+                filterProducts();
+            }else{
+                filterProducts();
+            }
+        })();
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
