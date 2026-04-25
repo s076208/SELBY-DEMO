@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e4002b">
+    <meta name="description" content="Selby MV Product Showroom - Browse our hardware products, check prices and stock availability. Fasteners, tools, electrical, plumbing, adhesives, and more.">
+    <title>Products – Selbymv</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png" sizes="32x32">
+    <link rel="icon" href="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png">
+</head>
+<body>
+    <!-- LOADING SCREEN -->
+    <div id="load">
+        <div class="load-wrap">
+            <div id="cssload-wrapper">
+                <div class="cssload-loader">
+                    <div class="cssload-line"></div><div class="cssload-line"></div><div class="cssload-line"></div>
+                    <div class="cssload-line"></div><div class="cssload-line"></div><div class="cssload-line"></div>
+                    <div class="cssload-subline"></div><div class="cssload-subline"></div><div class="cssload-subline"></div>
+                    <div class="cssload-subline"></div><div class="cssload-subline"></div>
+                    <div class="cssload-loader-circle-1"><div class="cssload-loader-circle-2"></div></div>
+                    <div class="cssload-needle"></div>
+                    <div class="cssload-loading">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page">
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+        <!-- HEADER -->
+        <header class="masthead" role="banner">
+            <div class="top-bar">
+                <div class="top-bar-inner">
+                    <div class="left-widgets">
+                        <div class="soc-ico">
+                            <a title="Facebook" href="https://www.facebook.com/selbymv/" target="_blank" rel="noopener noreferrer" class="facebook" aria-label="Facebook">f</a>
+                            <a title="Email" href="mailto:sales@selbymv.com" class="mail" aria-label="Email">✉</a>
+                            <a title="WhatsApp" href="https://api.whatsapp.com/send?phone=9603323002" target="_blank" rel="noopener noreferrer" class="whatsapp" aria-label="WhatsApp">✆</a>
+                        </div>
+                        <div class="text-area"><p><b>Why Pay More?</b></p></div>
+                    </div>
+                    <div class="right-widgets">
+                        <span class="mini-contacts phone">📞 +960 332-8583</span>
+                        <span class="mini-contacts email">✉ sales@selbymv.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bar">
+                <div class="branding"><a href="index.html"><img src="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png" width="46" height="60" alt="Selbymv"></a></div>
+                <nav class="main-navigation">
+                    <ul class="main-nav">
+                        <li class="menu-item"><a href="index.html">Home</a></li>
+                        <li class="menu-item current-menu-item"><a href="products.html">Products</a></li>
+                        <li class="menu-item"><a href="premium-brands.html">Premium Brands</a></li>
+                        <li class="menu-item"><a href="about-us.html">About Us</a></li>
+                        <li class="menu-item"><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            </div>
+        </header>
+
+        <!-- PAGE BANNER -->
+        <section class="page-banner" style="background-image: url('https://selbymv.com/wp-content/uploads/2019/06/Untitled-3.png');">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <p class="banner-subtitle">Quality, Safety &amp; Reliable</p>
+                <h1 class="banner-title">OUR PRODUCTS</h1>
+            </div>
+        </section>
+
+        <main id="content">
+            <section class="section">
+                <div class="container">
+                    <div class="product-page-layout">
+                        <!-- SIDEBAR -->
+                        <aside class="product-sidebar">
+                            <!-- Search -->
+                            <div class="sidebar-search">
+                                <input type="text" id="productSearch" class="form-control" placeholder="Search products..." onkeyup="filterProducts()">
+                            </div>
+
+                            <!-- Category Filter -->
+                            <div class="sidebar-categories">
+                                <h4>Categories</h4>
+                                <ul class="category-list">
+                                    <li><button class="category-btn active" onclick="filterByCategory('all', this)">All Products</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('fasteners', this)">🔩 Fasteners</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('powertools', this)">🔧 Power & Hand Tools</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('electrical', this)">💡 Electrical & Lighting</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('plumbing', this)">🔵 Plumbing</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('adhesives', this)">🧴 Adhesives & Sealants</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('locks', this)">🔐 Locks & Security</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('flooring', this)">🟫 Flooring</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('aluminium', this)">🔲 Aluminium Extrusions</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('acrylic', this)">🔳 Acrylic Sheets</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('racks', this)">🗄️ Racks & Storage</button></li>
+                                    <li><button class="category-btn" onclick="filterByCategory('laminates', this)">🪵 Laminates & Furniture Fittings</button></li>
+                                </ul>
+                            </div>
+
+                            <!-- Stock Filter -->
+                            <div class="sidebar-stock">
+                                <h4>Availability</h4>
+                                <label class="stock-check"><input type="checkbox" id="inStockOnly" onchange="filterProducts()"> In Stock Only</label>
+                            </div>
+
+                            <!-- Contact Info -->
+                            <div class="sidebar-contact">
+                                <h4>Need Help?</h4>
+                                <a href="https://api.whatsapp.com/send?phone=9603323002&text=I'm%20enquiring%20about%20a%20product" target="_blank" class="sidebar-contact-btn whatsapp">📱 WhatsApp</a>
+                                <a href="tel:+9603328583" class="sidebar-contact-btn call">📞 Call Us</a>
+                                <a href="mailto:sales@selbymv.com" class="sidebar-contact-btn email">✉ Email</a>
+                            </div>
+                        </aside>
+
+                        <!-- PRODUCT GRID -->
+                        <div class="product-grid-area">
+                            <!-- Breadcrumb -->
+                            <div class="product-breadcrumb">
+                                <a href="index.html">Home</a> / <span id="breadcrumbCategory">All Products</span>
+                            </div>
+
+                            <!-- Results info -->
+                            <div class="product-results-info">
+                                <span id="resultCount">0</span> products found
+                            </div>
+
+                            <!-- Product Grid -->
+                            <div class="product-grid-container" id="productGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT CTA -->
+            <section class="section cta-section" style="background-image: url('https://selbymv.com/wp-content/uploads/2019/05/construction-646913_1280.jpg');">
+                <div class="cta-overlay" style="background: rgba(0,0,0,0.8);"></div>
+                <div class="container cta-content text-center">
+                    <h2>Can't Find What You Need?</h2>
+                    <p>Contact us directly — we have more products in store than shown online.</p>
+                    <a href="contact-us.html" class="btn btn-primary">Get In Touch</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-col"><img src="https://selbymv.com/wp-content/uploads/2019/11/Untitled-1.png" alt="Selby MV" width="263" loading="lazy"><p>Selby Investments (Selbydrive) started as a trading company in 1965 in the Republic of Maldives.</p></div>
+                    <div class="footer-col"><h4>Contact Us</h4><p><strong>Selby Drive</strong><br>Mohamed Ismail Didi Magu<br>Phone: +960-332-3002</p><p><strong>Selby Star</strong><br>Nikagas Magu<br>Phone: +960-332-8583<br>Email: sales@selbymv.com</p></div>
+                    <div class="footer-col"><h4>Quick Links</h4><ul class="footer-nav">
+                        <li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li>
+                        <li><a href="premium-brands.html">Premium Brands</a></li><li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li></ul></div>
+                </div>
+            </div>
+            <div class="bottom-bar"><div class="container"><p>&copy; 2024 Selby MV. All rights reserved.</p></div></div>
+        </footer>
+        <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+    </div>
+
+    <!-- PRODUCT DATA & LOGIC -->
+    <script>
+        // Sample product database
+        const products = [
+            // Fasteners
+            { id: 'SKU-001', name: 'PATTA Wood Screw 4x40mm (100 pcs)', category: 'fasteners', catName: 'Fasteners', price: 'MVR 45.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/screws_ms.png' },
+            { id: 'SKU-002', name: 'PATTA Drywall Screw 3.5x25mm (200 pcs)', category: 'fasteners', catName: 'Fasteners', price: 'MVR 65.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/screws_drywall-coarse.png' },
+            { id: 'SKU-003', name: 'PATTA Chipboard Screw 5x50mm (100 pcs)', category: 'fasteners', catName: 'Fasteners', price: 'MVR 85.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/screws_chipboard.png' },
+            { id: 'SKU-004', name: 'SDS Bugle Head Screw 4.2x75mm (50 pcs)', category: 'fasteners', catName: 'Fasteners', price: 'MVR 120.00', stock: 'low', image: 'https://selbymv.com/wp-content/uploads/2019/04/sds_BUGLE-H.png' },
+            { id: 'SKU-005', name: 'DIN 7997 Countersunk Screw M6x70mm', category: 'fasteners', catName: 'Fasteners', price: 'MVR 55.00', stock: 'out', image: 'https://selbymv.com/wp-content/uploads/2019/04/screws_din7997.png' },
+            { id: 'SKU-006', name: 'Confirmat Screw 7x50mm (50 pcs)', category: 'fasteners', catName: 'Fasteners', price: 'MVR 75.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/05/screws_confirmat_1.png' },
+
+            // Power Tools
+            { id: 'SKU-007', name: 'Rotary Hammer ARH10-20 800W', category: 'powertools', catName: 'Power Tools', price: 'MVR 1,250.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/0024_ac-rotaryhammer-ARH10-20.png' },
+            { id: 'SKU-008', name: 'Rotary Hammer ARH09-30 900W', category: 'powertools', catName: 'Power Tools', price: 'MVR 1,450.00', stock: 'low', image: 'https://selbymv.com/wp-content/uploads/2019/04/0023_ac-rotaryhammer-ARH09-30.png' },
+            { id: 'SKU-009', name: 'Heat Gun 2000W Professional', category: 'powertools', catName: 'Power Tools', price: 'MVR 450.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/0018_ac-heat-gun.png' },
+            { id: 'SKU-010', name: 'Electric Drill AEL03-10 500W', category: 'powertools', catName: 'Power Tools', price: 'MVR 680.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/0015_ac-drill-AEL03-10.png' },
+            { id: 'SKU-011', name: 'Heavy Duty Pipe Wrench 18"', category: 'powertools', catName: 'Power Tools', price: 'MVR 320.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/Pipe-Wrench-PNG-Image.png' },
+            { id: 'SKU-012', name: 'Professional Plier Set 3-Piece', category: 'powertools', catName: 'Power Tools', price: 'MVR 180.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/Plier-PNG-HD-Quality.png' },
+
+            // Electrical
+            { id: 'SKU-013', name: 'LED Bulb 12W - Warm White', category: 'electrical', catName: 'Electrical', price: 'MVR 65.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/LED-Bulb-PNG-Photos.png' },
+            { id: 'SKU-014', name: 'LED Tube Light 18W - Cool White', category: 'electrical', catName: 'Electrical', price: 'MVR 120.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/Tube-Light-PNG-File.png' },
+            { id: 'SKU-015', name: 'Electrical Switch 2-Gang White', category: 'electrical', catName: 'Electrical', price: 'MVR 35.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/Electrical-Switch-Transparent-Background.png' },
+            { id: 'SKU-016', name: 'Electric Cable 2.5mm² (per meter)', category: 'electrical', catName: 'Electrical', price: 'MVR 15.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/Electric-Cable-PNG-Pic.png' },
+            { id: 'SKU-017', name: 'MCB Single Pole 16A', category: 'electrical', catName: 'Electrical', price: 'MVR 85.00', stock: 'low', image: 'https://selbymv.com/wp-content/uploads/2019/11/s-l1600.png' },
+
+            // Plumbing
+            { id: 'SKU-018', name: 'PVC Pipe 2" x 3m Schedule 40', category: 'plumbing', catName: 'Plumbing', price: 'MVR 85.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/10/PVC-Fits-472x315.jpg' },
+            { id: 'SKU-019', name: 'PVC Elbow 90° 2"', category: 'plumbing', catName: 'Plumbing', price: 'MVR 25.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/10/PVC-Fits-472x315.jpg' },
+            { id: 'SKU-020', name: 'PVC End Cap 2"', category: 'plumbing', catName: 'Plumbing', price: 'MVR 18.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/10/PVC-Fits-472x315.jpg' },
+
+            // Adhesives
+            { id: 'SKU-021', name: 'Epoxy Adhesive 500ml - Clear', category: 'adhesives', catName: 'Adhesives', price: 'MVR 120.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/vt6.png' },
+            { id: 'SKU-022', name: 'Silicone Sealant 300ml - White', category: 'adhesives', catName: 'Adhesives', price: 'MVR 65.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/vt7.png' },
+            { id: 'SKU-023', name: 'Construction Adhesive 600ml', category: 'adhesives', catName: 'Adhesives', price: 'MVR 95.00', stock: 'low', image: 'https://selbymv.com/wp-content/uploads/2019/04/vt8.png' },
+            { id: 'SKU-024', name: 'Super Glue 3g Tube', category: 'adhesives', catName: 'Adhesives', price: 'MVR 25.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/vt1.png' },
+
+            // Locks
+            { id: 'SKU-025', name: 'Solex Door Lock SL-200', category: 'locks', catName: 'Locks', price: 'MVR 350.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/2.png' },
+            { id: 'SKU-026', name: 'Solex Padlock 50mm Heavy Duty', category: 'locks', catName: 'Locks', price: 'MVR 180.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/3.png' },
+            { id: 'SKU-027', name: 'Solex Deadbolt Lock', category: 'locks', catName: 'Locks', price: 'MVR 420.00', stock: 'low', image: 'https://selbymv.com/wp-content/uploads/2019/04/4.png' },
+
+            // Flooring
+            { id: 'SKU-028', name: 'Ascerta Vintage Oak Flooring (per m²)', category: 'flooring', catName: 'Flooring', price: 'MVR 280.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/3359_Ascerta_Vintage_Oak-1-1024x1024.jpg' },
+            { id: 'SKU-029', name: 'Ascerta Farmhouse Flooring (per m²)', category: 'flooring', catName: 'Flooring', price: 'MVR 310.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/04/3346_Ascerta_Farmhouse-1-1024x1021.jpg' },
+            { id: 'SKU-030', name: 'Ascerta Rustic Plank (per m²)', category: 'flooring', catName: 'Flooring', price: 'MVR 260.00', stock: 'low', image: 'https://selbymv.com/wp-content/uploads/2019/04/3312_Ascerta_Rustic_Plank-1-1024x1024.jpg' },
+
+            // Aluminium
+            { id: 'SKU-031', name: 'Aluminium Extrusion T-Profile 2m', category: 'aluminium', catName: 'Aluminium', price: 'MVR 220.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/07/profile2-525x350.jpg' },
+            { id: 'SKU-032', name: 'Aluminium Angle 25x25mm x 3m', category: 'aluminium', catName: 'Aluminium', price: 'MVR 180.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/07/profile2-525x350.jpg' },
+
+            // Acrylic
+            { id: 'SKU-033', name: 'Acrylic Sheet Clear 3mm 1.2x2.4m', category: 'acrylic', catName: 'Acrylic', price: 'MVR 450.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/11/Untitled1-2-525x350.png' },
+            { id: 'SKU-034', name: 'Acrylic Sheet White 5mm 1.2x2.4m', category: 'acrylic', catName: 'Acrylic', price: 'MVR 650.00', stock: 'low', image: 'https://selbymv.com/wp-content/uploads/2019/11/Untitled1-2-525x350.png' },
+
+            // Racks
+            { id: 'SKU-035', name: 'Gondola Rack Double-Sided 180cm', category: 'racks', catName: 'Racks', price: 'MVR 2,800.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2-525x350.jpg' },
+            { id: 'SKU-036', name: 'Boltless Shelving 4-Tier 90x45x180cm', category: 'racks', catName: 'Racks', price: 'MVR 1,500.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2-525x350.jpg' },
+
+            // Laminates
+            { id: 'SKU-037', name: 'High-Pressure Laminate Sheet 1.2x2.4m', category: 'laminates', catName: 'Laminates', price: 'MVR 350.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2ss-525x350.png' },
+            { id: 'SKU-038', name: 'Furniture Handle Modern Brushed Nickel', category: 'laminates', catName: 'Laminates', price: 'MVR 45.00', stock: 'in', image: 'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2ss-525x350.png' },
+        ];
+
+        let activeCategory = 'all';
+
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById('productGrid');
+            const count = document.getElementById('resultCount');
+            
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = '<div class="no-products"><p>No products found matching your criteria.</p><p>Try a different search or <a href="contact-us.html">contact us</a> — we may have it in store!</p></div>';
+                count.textContent = '0';
+                return;
+            }
+
+            count.textContent = filteredProducts.length;
+            
+            grid.innerHTML = filteredProducts.map(p => `
+                <div class="product-card-item fade-in-up">
+                    <div class="product-card-img">
+                        <img src="${p.image}" alt="${p.name}" loading="lazy">
+                        ${p.stock === 'in' ? '<span class="stock-badge in-stock">● In Stock</span>' : 
+                          p.stock === 'low' ? '<span class="stock-badge low-stock">● Low Stock</span>' : 
+                          '<span class="stock-badge out-stock">● Out of Stock</span>'}
+                    </div>
+                    <div class="product-card-body">
+                        <span class="product-sku">${p.id}</span>
+                        <h3 class="product-name">${p.name}</h3>
+                        <p class="product-price">${p.price}</p>
+                        <div class="product-actions">
+                            <a href="https://api.whatsapp.com/send?phone=9603323002&text=I'm%20interested%20in%20${encodeURIComponent(p.name)}%20(${p.id})" target="_blank" class="btn btn-whatsapp-sm">📱 Enquire</a>
+                            <a href="tel:+9603328583" class="btn btn-call-sm">📞 Call</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterByCategory(cat, btn) {
+            activeCategory = cat;
+            document.getElementById('breadcrumbCategory').textContent = cat === 'all' ? 'All Products' : btn.textContent.trim();
+            
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('productSearch').value.toLowerCase();
+            const inStockOnly = document.getElementById('inStockOnly').checked;
+
+            let filtered = products.filter(p => {
+                // Category filter
+                if (activeCategory !== 'all' && p.category !== activeCategory) return false;
+                
+                // Stock filter
+                if (inStockOnly && p.stock === 'out') return false;
+                
+                // Search filter
+                if (searchTerm && !p.name.toLowerCase().includes(searchTerm) && !p.id.toLowerCase().includes(searchTerm) && !p.catName.toLowerCase().includes(searchTerm)) return false;
+                
+                return true;
+            });
+
+            renderProducts(filtered);
+        }
+
+        // Initial render
+        renderProducts(products);
+        document.getElementById('resultCount').textContent = products.length;
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
