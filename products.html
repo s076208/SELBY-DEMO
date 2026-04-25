@@ -144,7 +144,7 @@
             {id:'SKU-005',name:'DIN 7997 Countersunk Screw M6x70mm',category:'fasteners',catName:'Fasteners',price:55.00,stock:'out',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_din7997.png',specs:['Size: M6x70mm','Material: Stainless Steel','Head: Countersunk','Drive: Torx','Standard: DIN 7997'],desc:'German standard DIN 7997 stainless steel countersunk screws. Corrosion-resistant, perfect for outdoor applications and marine environments. Currently out of stock.'},
             {id:'SKU-006',name:'Confirmat Screw 7x50mm (50 pcs)',category:'fasteners',catName:'Fasteners',price:75.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/05/screws_confirmat_1.png',specs:['Size: 7x50mm','Material: Steel','Quantity: 50 pcs','Head: Flat','Drive: Hex'],desc:'Confirmat screws specifically designed for furniture assembly and cabinetry. The wide thread provides excellent grip in particle board and MDF, preventing loosening over time.'},
             {id:'SKU-007',name:'Rotary Hammer ARH10-20 800W',category:'powertools',catName:'Power Tools',price:1250.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0024_ac-rotaryhammer-ARH10-20.png',specs:['Power: 800W','Impact Energy: 2.0 Joules','Weight: 4.2 kg','Chuck: SDS-Plus','Speed: 0-1200 RPM'],desc:'Professional rotary hammer drill for concrete, brick, and stone drilling. Features SDS-Plus chuck for quick bit changes, ergonomic grip, and anti-vibration technology for all-day use on construction sites.'},
-            {id:'SKU-008',name:'Rotary Hammer ARH09-30 900W',category:'powertools',catName:'Power Tools',price:1450.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/0023_ac-rotaryhammer-ARH09-30.png',specs:['Power: 900W','Impact Energy: 3.0 Joules','Weight: 5.1 kg','Chuck: SDS-Plus','Speed: 0-1100 RPM'],desc:'Heavy-duty rotary hammer with 3.0 joules impact energy for demanding demolition and drilling work. Suitable for larger diameter holes in reinforced concrete. Low stock — order soon.'},
+            {id:'SKU-008',name:'Rotary Hammer ARH09-30 900W',category:'powertools',catName:'Power Tools',price:1450.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/0023_ac-rotaryhammer-ARH09-30.png',specs:['Power: 900W','Impact Energy: 3.0 Joules','Weight: 5.1 kg','Chuck: SDS-Plus','Speed: 0-1100 RPM'],desc:'Heavy-duty rotary hammer with 3.0 joules impact energy for demanding demolition and drilling work. Suitable for larger diameter holes in reinforced concrete. Low stock - order soon.'},
             {id:'SKU-009',name:'Heat Gun 2000W Professional',category:'powertools',catName:'Power Tools',price:450.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0018_ac-heat-gun.png',specs:['Power: 2000W','Temperature: 50-600C','Airflow: 250-500 L/min','Weight: 0.8 kg','Cable: 3m'],desc:'Professional 2000W heat gun with variable temperature control. Ideal for paint stripping, plastic welding, shrink wrapping, thawing pipes, and adhesive removal.'},
             {id:'SKU-010',name:'Electric Drill AEL03-10 500W',category:'powertools',catName:'Power Tools',price:680.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0015_ac-drill-AEL03-10.png',specs:['Power: 500W','Chuck: 10mm Keyed','Speed: 0-2800 RPM','Weight: 1.5 kg','Cable: 2m'],desc:'Compact 500W electric drill suitable for drilling in wood, metal, and plastic. Lightweight design makes it perfect for overhead work and extended use. Includes depth gauge and auxiliary handle.'},
             {id:'SKU-011',name:'Heavy Duty Pipe Wrench 18"',category:'powertools',catName:'Power Tools',price:320.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Pipe-Wrench-PNG-Image.png',specs:['Length: 18 inch (450mm)','Capacity: 2 inch pipe','Material: Cast Iron','Handle: Ergonomic Grip','Jaw: Replaceable'],desc:'Heavy-duty 18-inch pipe wrench made from durable cast iron. Designed for gripping and turning pipes and fittings in plumbing and mechanical applications. Replaceable jaw for extended tool life.'},
@@ -177,117 +177,21 @@
             {id:'SKU-038',name:'Furniture Handle Modern Brushed Nickel',category:'laminates',catName:'Laminates',price:45.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2ss-525x350.png',specs:['Material: Zinc Alloy','Finish: Brushed Nickel','Length: 128mm','Hole Spacing: 96mm','Includes: Screws'],desc:'Modern brushed nickel furniture handle suitable for cabinets, drawers, and wardrobes. Zinc alloy construction with durable brushed nickel finish. Includes mounting screws for easy installation.'}
         ];
 
-        var activeCategory='all',activeCategoryName='All Categories';
+        var activeCategory = 'all';
+        var activeCategoryName = 'All Categories';
 
-        function toggleCategoryDropdown(){document.getElementById('categoryDropdown').classList.toggle('open');}
-        document.addEventListener('click',function(e){var d=document.getElementById('categoryDropdown'),b=document.getElementById('categoryDropdownBtn');if(d&&b&&!d.contains(e.target)&&!b.contains(e.target))d.classList.remove('open');});
-
-        function selectCategory(cat,name,btn){
-            activeCategory=cat;activeCategoryName=name;
-            document.getElementById('currentCategoryLabel').textContent=name;
-            document.getElementById('breadcrumbCategory').textContent=name;
-            document.getElementById('categoryDropdown').classList.remove('open');
-            document.querySelectorAll('.category-option').forEach(function(b){b.classList.remove('active');});
-            if(btn)btn.classList.add('active');
-            var url=new URL(window.location);
-            if(cat==='all'){url.searchParams.delete('category');}
-            else{url.searchParams.set('category',cat);}
-            window.history.replaceState({},'',url);
-            filterProducts();
+        // Category dropdown toggle
+        function toggleCategoryDropdown() {
+            document.getElementById('categoryDropdown').classList.toggle('open');
         }
 
-        function filterProducts(){
-            var search=document.getElementById('productSearch').value.toLowerCase();
-            var filtered=products.filter(function(p){
-                if(activeCategory!=='all'&&p.category!==activeCategory)return false;
-                if(search&&!p.name.toLowerCase().includes(search)&&!p.id.toLowerCase().includes(search)&&!p.catName.toLowerCase().includes(search))return false;
-                return true;
-            });
-            renderProducts(filtered);
-        }
-
-        function renderProducts(arr){
-            document.getElementById('resultCount').textContent=arr.length;
-            var grid=document.getElementById('productGrid');
-            if(arr.length===0){grid.innerHTML='<div class="no-products"><p>No products found.</p><p>Try a different search or <a href="contact-us.html">contact us</a>.</p></div>';return;}
-            grid.innerHTML=arr.map(function(p,index){
-                var sl=p.stock==='in'?'In Stock':p.stock==='low'?'Low Stock':'Out of Stock';
-                var sc=p.stock==='in'?'in-stock':p.stock==='low'?'low-stock':'out-stock';
-                var pf='MVR '+p.price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-                return '<div class="product-card-veligaa fade-in-up">'+
-                    '<div class="product-card-img-wrap">'+
-                        '<a href="javascript:void(0)" class="product-card-img-link" onclick="openProductPopup('+index+')"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"></a>'+
-                        '<span class="stock-badge-veligaa '+sc+'">'+sl+'</span>'+
-                    '</div>'+
-                    '<div class="product-card-info">'+
-                        '<span class="product-sku-veligaa">'+p.id+'</span>'+
-                        '<h3 class="product-name-veligaa"><a href="javascript:void(0)" onclick="openProductPopup('+index+')" style="color:#303030;text-decoration:none;">'+p.name+'</a></h3>'+
-                        '<p class="product-price-veligaa">'+pf+'</p>'+
-                        '<div class="product-actions-veligaa">'+
-                            '<a href="https://api.whatsapp.com/send?phone=9603323002&text=I\'m%20interested%20in%20'+encodeURIComponent(p.name)+'%20('+p.id+')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>'+
-                            '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>'+
-                        '</div>'+
-                    '</div>'+
-                '</div>';
-            }).join('');
-        }
-
-        // Product Popup
-        function openProductPopup(index){
-            var p=products[index];
-            var sl=p.stock==='in'?'In Stock':p.stock==='low'?'Low Stock':'Out of Stock';
-            var sc=p.stock==='in'?'in-stock':p.stock==='low'?'low-stock':'out-stock';
-            var pf='MVR '+p.price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-            var specsHtml=p.specs.map(function(s){return '<li>'+s+'</li>';}).join('');
-            var html='<div class="popup-layout">'+
-                '<div class="popup-image"><img src="'+p.image+'" alt="'+p.name+'"></div>'+
-                '<div class="popup-details">'+
-                    '<span class="stock-badge-veligaa '+sc+'" style="position:static;display:inline-block;margin-bottom:10px;">'+sl+'</span>'+
-                    '<h2>'+p.name+'</h2>'+
-                    '<p class="popup-sku">'+p.id+'</p>'+
-                    '<p class="popup-price">'+pf+'</p>'+
-                    '<div class="popup-section"><h3>Description</h3><p>'+p.desc+'</p></div>'+
-                    '<div class="popup-section"><h3>Specifications</h3><ul class="popup-specs">'+specsHtml+'</ul></div>'+
-                    '<div class="popup-actions">'+
-                        '<a href="https://api.whatsapp.com/send?phone=9603323002&text=I\'m%20interested%20in%20'+encodeURIComponent(p.name)+'%20('+p.id+')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp Enquiry</a>'+
-                        '<a href="tel:+9603328583" class="btn-call-veligaa"> Call Now</a>'+
-                    '</div>'+
-                '</div>'+
-            '</div>';
-            document.getElementById('popupBody').innerHTML=html;
-            document.getElementById('productPopup').classList.add('open');
-            document.body.style.overflow='hidden';
-        }
-
-        function closeProductPopup(event){
-            if(event&&event.target!==document.getElementById('productPopup'))return;
-            document.getElementById('productPopup').classList.remove('open');
-            document.body.style.overflow='';
-        }
-
-        // Init from URL
-        (function(){
-            var params=new URLSearchParams(window.location.search);
-            var catParam=params.get('category');
-            if(catParam){
-                var buttons=document.querySelectorAll('.category-option');
-                buttons.forEach(function(btn){
-                    var onclickAttr=btn.getAttribute('onclick')||'';
-                    if(onclickAttr.indexOf("'"+catParam+"'")!==-1){
-                        activeCategory=catParam;
-                        var label=btn.textContent.trim();
-                        document.getElementById('currentCategoryLabel').textContent=label;
-                        document.getElementById('breadcrumbCategory').textContent=label;
-                        buttons.forEach(function(b){b.classList.remove('active');});
-                        btn.classList.add('active');
-                    }
-                });
-                filterProducts();
-            }else{
-                filterProducts();
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            var d = document.getElementById('categoryDropdown');
+            var b = document.getElementById('categoryDropdownBtn');
+            if (d && b && !d.contains(e.target) && !b.contains(e.target)) {
+                d.classList.remove('open');
             }
-        })();
-    </script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+        });
+
+        // Select category
