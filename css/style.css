@@ -1569,3 +1569,72 @@ ul {
     .cta-icons { gap: 20px; }
     .cta-icon-circle { width: 50px; height: 50px; }
 }
+
+/* ========================================
+   PRODUCT SHOWROOM (Veligaa-style)
+   ======================================== */
+.product-toolbar { background: var(--dark); padding: 15px 0; position: sticky; top: var(--header-height); z-index: 100; }
+.product-toolbar-inner { display: flex; gap: 15px; align-items: center; }
+.category-dropdown-wrapper { position: relative; flex-shrink: 0; }
+.category-dropdown-btn { background: var(--dark); color: var(--white); border: 1px solid rgba(255,255,255,0.2); padding: 12px 20px; font-size: 14px; font-family: var(--font-heading); cursor: pointer; border-radius: 4px; display: flex; align-items: center; gap: 10px; white-space: nowrap; min-width: 200px; }
+.category-dropdown-btn:hover { background: #3a3a3a; }
+.hamburger-icon { font-size: 18px; }
+.category-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white); border: 1px solid #ddd; border-radius: 4px; min-width: 280px; max-height: 400px; overflow-y: auto; z-index: 200; box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+.category-dropdown-menu.open { display: block; }
+.category-option { display: block; width: 100%; text-align: left; padding: 10px 16px; border: none; background: none; font-size: 13px; cursor: pointer; color: var(--dark); font-family: var(--font-body); transition: var(--transition); }
+.category-option:hover { background: #f5f5f5; color: var(--primary); }
+.category-option.active { background: #fef0f0; color: var(--primary); font-weight: 600; }
+.product-search-wrapper { flex: 1; display: flex; }
+.product-search-input { flex: 1; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--white); font-size: 14px; font-family: var(--font-body); border-radius: 4px 0 0 4px; }
+.product-search-input::placeholder { color: rgba(255,255,255,0.5); }
+.product-search-input:focus { outline: none; border-color: var(--primary); background: rgba(255,255,255,0.15); }
+.product-search-btn { background: var(--primary); color: var(--white); border: none; padding: 12px 18px; cursor: pointer; border-radius: 0 4px 4px 0; font-size: 16px; transition: var(--transition); }
+.product-search-btn:hover { background: var(--primary-hover); }
+.product-breadcrumb { font-size: 13px; color: #999; margin-bottom: 10px; }
+.product-breadcrumb a { color: #999; }
+.product-breadcrumb a:hover { color: var(--primary); }
+.product-breadcrumb span { color: var(--dark); }
+.product-results-bar { font-size: 14px; color: #666; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+.product-results-bar span { font-weight: 700; color: var(--dark); }
+
+.product-grid-veligaa { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.product-card-veligaa { background: var(--white); border: 1px solid #e5e5e5; border-radius: 4px; overflow: hidden; transition: var(--transition); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.product-card-veligaa:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
+.product-card-img-wrap { position: relative; overflow: hidden; background: #f9f9f9; }
+.product-card-img-link img { width: 100%; height: 220px; object-fit: contain; padding: 20px; transition: transform 0.3s ease; }
+.product-card-veligaa:hover .product-card-img-link img { transform: scale(1.05); }
+.stock-badge-veligaa { position: absolute; top: 10px; right: 10px; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.stock-badge-veligaa.in-stock { background: #d4edda; color: #155724; }
+.stock-badge-veligaa.low-stock { background: #fff3cd; color: #856404; }
+.stock-badge-veligaa.out-stock { background: #f8d7da; color: #721c24; }
+.product-card-info { padding: 15px; }
+.product-sku-veligaa { font-size: 11px; color: #999; display: block; margin-bottom: 6px; }
+.product-name-veligaa { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.product-price-veligaa { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.product-actions-veligaa { display: flex; gap: 8px; }
+.btn-whatsapp-veligaa, .btn-call-veligaa { flex: 1; text-align: center; padding: 8px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; text-decoration: none; transition: var(--transition); border: 1px solid transparent; }
+.btn-whatsapp-veligaa { background: #25D366; color: var(--white); border-color: #25D366; }
+.btn-whatsapp-veligaa:hover { background: #1ebe57; color: var(--white); }
+.btn-call-veligaa { background: var(--white); color: var(--primary); border-color: var(--primary); }
+.btn-call-veligaa:hover { background: var(--primary); color: var(--white); }
+.no-products { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #999; }
+.no-products p { margin-bottom: 10px; font-size: 16px; }
+.no-products a { color: var(--primary); font-weight: 600; }
+
+@media (max-width: 1024px) { .product-grid-veligaa { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+    .product-toolbar-inner { flex-direction: column; }
+    .category-dropdown-btn { width: 100%; }
+    .category-dropdown-menu { width: 100%; }
+    .product-grid-veligaa { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .product-card-img-link img { height: 180px; }
+    .product-card-info { padding: 10px; }
+    .product-name-veligaa { font-size: 13px; }
+    .product-price-veligaa { font-size: 14px; }
+    .btn-whatsapp-veligaa, .btn-call-veligaa { font-size: 11px; padding: 7px 8px; }
+}
+@media (max-width: 480px) {
+    .product-grid-veligaa { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .product-card-img-link img { height: 150px; padding: 10px; }
+    .product-actions-veligaa { flex-direction: column; gap: 5px; }
+}
