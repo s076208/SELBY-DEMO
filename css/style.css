@@ -1548,3 +1548,24 @@ ul {
     .cta-icons { gap: 20px; }
     .cta-icon-circle { width: 50px; height: 50px; }
 }
+
+@media (max-width: 480px) {
+    .hero-slider { height: 420px; }
+    .hero-content { padding: 25px 20px 60px 20px; }
+    .hero-content h1 { font-size: 22px; margin-bottom: 12px; }
+    .hero-category { font-size: 16px; margin-bottom: 6px; }
+    .hero-description { font-size: 13px; margin-bottom: 18px; line-height: 1.5; }
+    .hero-buttons { flex-direction: row; gap: 10px; }
+    .hero-buttons .btn { width: auto; padding: 10px 20px; font-size: 12px; }
+    .hero-dots { bottom: 15px; }
+    .hero-dot { width: 8px; height: 8px; }
+    .page-banner { height: 200px; }
+    .banner-title { font-size: 28px; padding: 6px 15px; }
+    .banner-subtitle { font-size: 16px; letter-spacing: 1px; }
+    .stat-number { font-size: 30px; }
+    .stat-number span { font-size: 25px; }
+    .dual-buttons { flex-direction: column; }
+    .three-col .col.card { padding: 20px; }
+    .cta-icons { gap: 20px; }
+    .cta-icon-circle { width: 50px; height: 50px; }
+}
