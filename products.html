@@ -306,5 +306,24 @@
     </script>
 
     <script src="js/main.js"></script>
+    <script>
+    // Check URL for category parameter
+    function getCategoryFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('category') || 'all';
+    }
+
+    // On page load, filter by URL category
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlCategory = getCategoryFromURL();
+        if (urlCategory !== 'all') {
+            // Find the matching category button and click it
+            const btn = document.querySelector(`.category-btn[onclick*="${urlCategory}"]`);
+            if (btn) {
+                btn.click();
+            }
+        }
+    });
+</script>
 </body>
 </html>
