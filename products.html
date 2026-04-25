@@ -223,13 +223,26 @@
             }).join('');
         }
 
-        function initFromURL(){
+               function initFromURL(){
             const params=new URLSearchParams(window.location.search);
             const catParam=params.get('category');
             if(catParam){
                 const btn=document.querySelector(`.category-option[onclick*="'${catParam}'"]`);
-                if(btn)btn.click();else filterProducts();
-            }else{filterProducts();}
+                if(btn){
+                    // Set category first, then render
+                    activeCategory = catParam;
+                    var label = btn.textContent.trim();
+                    document.getElementById('currentCategoryLabel').textContent = label;
+                    document.getElementById('breadcrumbCategory').textContent = label;
+                    document.querySelectorAll('.category-option').forEach(function(b){ b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    filterProducts();
+                } else {
+                    filterProducts();
+                }
+            } else {
+                filterProducts();
+            }
         }
         initFromURL();
     </script>
