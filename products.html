@@ -135,79 +135,55 @@
         <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
     </div>
 
-       <script>
+          <script>
         var products = [
-            {id:'SKU-001',name:'PATTA Wood Screw 4x40mm (100 pcs)',category:'fasteners',catName:'Fasteners',price:45.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_ms.png',specs:['Size: 4x40mm','Material: Steel','Quantity: 100 pcs','Head: Countersunk','Drive: Phillips'],desc:'High-quality PATTA brand wood screws ideal for general woodworking, furniture assembly, and construction. These countersunk screws provide a flush finish and strong grip in all types of wood.'},
-            {id:'SKU-002',name:'PATTA Drywall Screw 3.5x25mm (200 pcs)',category:'fasteners',catName:'Fasteners',price:65.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_drywall-coarse.png',specs:['Size: 3.5x25mm','Material: Steel','Quantity: 200 pcs','Head: Bugle','Drive: Phillips'],desc:'PATTA drywall screws designed for attaching drywall to wood or metal studs. The bugle head prevents tearing of the drywall paper surface. Sharp point for fast penetration.'},
-            {id:'SKU-003',name:'PATTA Chipboard Screw 5x50mm (100 pcs)',category:'fasteners',catName:'Fasteners',price:85.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_chipboard.png',specs:['Size: 5x50mm','Material: Steel','Quantity: 100 pcs','Head: Countersunk','Drive: Pozidriv'],desc:'PATTA chipboard screws with coarse thread for maximum grip in particle board, MDF, and chipboard. Ideal for furniture assembly and cabinetry work.'},
-            {id:'SKU-004',name:'SDS Bugle Head Screw 4.2x75mm (50 pcs)',category:'fasteners',catName:'Fasteners',price:120.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/sds_BUGLE-H.png',specs:['Size: 4.2x75mm','Material: Steel','Quantity: 50 pcs','Head: Bugle','Drive: Phillips'],desc:'SDS bugle head screws for heavy-duty timber construction. Extra-long 75mm length provides deep penetration and superior holding power for structural applications.'},
-            {id:'SKU-005',name:'DIN 7997 Countersunk Screw M6x70mm',category:'fasteners',catName:'Fasteners',price:55.00,stock:'out',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_din7997.png',specs:['Size: M6x70mm','Material: Stainless Steel','Head: Countersunk','Drive: Torx','Standard: DIN 7997'],desc:'German standard DIN 7997 stainless steel countersunk screws. Corrosion-resistant, perfect for outdoor applications and marine environments. Currently out of stock.'},
-            {id:'SKU-006',name:'Confirmat Screw 7x50mm (50 pcs)',category:'fasteners',catName:'Fasteners',price:75.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/05/screws_confirmat_1.png',specs:['Size: 7x50mm','Material: Steel','Quantity: 50 pcs','Head: Flat','Drive: Hex'],desc:'Confirmat screws specifically designed for furniture assembly and cabinetry. The wide thread provides excellent grip in particle board and MDF, preventing loosening over time.'},
-            {id:'SKU-007',name:'Rotary Hammer ARH10-20 800W',category:'powertools',catName:'Power Tools',price:1250.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0024_ac-rotaryhammer-ARH10-20.png',specs:['Power: 800W','Impact Energy: 2.0 Joules','Weight: 4.2 kg','Chuck: SDS-Plus','Speed: 0-1200 RPM'],desc:'Professional rotary hammer drill for concrete, brick, and stone drilling. Features SDS-Plus chuck for quick bit changes, ergonomic grip, and anti-vibration technology for all-day use on construction sites.'},
-            {id:'SKU-008',name:'Rotary Hammer ARH09-30 900W',category:'powertools',catName:'Power Tools',price:1450.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/0023_ac-rotaryhammer-ARH09-30.png',specs:['Power: 900W','Impact Energy: 3.0 Joules','Weight: 5.1 kg','Chuck: SDS-Plus','Speed: 0-1100 RPM'],desc:'Heavy-duty rotary hammer with 3.0 joules impact energy for demanding demolition and drilling work. Suitable for larger diameter holes in reinforced concrete. Low stock - order soon.'},
-            {id:'SKU-009',name:'Heat Gun 2000W Professional',category:'powertools',catName:'Power Tools',price:450.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0018_ac-heat-gun.png',specs:['Power: 2000W','Temperature: 50-600C','Airflow: 250-500 L/min','Weight: 0.8 kg','Cable: 3m'],desc:'Professional 2000W heat gun with variable temperature control. Ideal for paint stripping, plastic welding, shrink wrapping, thawing pipes, and adhesive removal.'},
-            {id:'SKU-010',name:'Electric Drill AEL03-10 500W',category:'powertools',catName:'Power Tools',price:680.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0015_ac-drill-AEL03-10.png',specs:['Power: 500W','Chuck: 10mm Keyed','Speed: 0-2800 RPM','Weight: 1.5 kg','Cable: 2m'],desc:'Compact 500W electric drill suitable for drilling in wood, metal, and plastic. Lightweight design makes it perfect for overhead work and extended use. Includes depth gauge and auxiliary handle.'},
-            {id:'SKU-011',name:'Heavy Duty Pipe Wrench 18"',category:'powertools',catName:'Power Tools',price:320.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Pipe-Wrench-PNG-Image.png',specs:['Length: 18 inch (450mm)','Capacity: 2 inch pipe','Material: Cast Iron','Handle: Ergonomic Grip','Jaw: Replaceable'],desc:'Heavy-duty 18-inch pipe wrench made from durable cast iron. Designed for gripping and turning pipes and fittings in plumbing and mechanical applications. Replaceable jaw for extended tool life.'},
-            {id:'SKU-012',name:'Professional Plier Set 3-Piece',category:'powertools',catName:'Power Tools',price:180.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Plier-PNG-HD-Quality.png',specs:['Pieces: 3','Types: Combination, Long Nose, Side Cutting','Material: Chrome Vanadium Steel','Handle: Non-slip Grip','Warranty: 1 Year'],desc:'Professional 3-piece plier set including combination pliers, long nose pliers, and side cutters. Chrome vanadium steel construction with comfortable non-slip handles. Essential for any toolbox.'},
-            {id:'SKU-013',name:'LED Bulb 12W Warm White',category:'electrical',catName:'Electrical',price:65.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/LED-Bulb-PNG-Photos.png',specs:['Wattage: 12W (equiv. 75W)','Color: Warm White 3000K','Lumens: 1050 lm','Base: E27 Screw','Lifespan: 25,000 hours'],desc:'Energy-efficient 12W LED bulb producing warm white light equivalent to a 75W incandescent bulb. Long lifespan of up to 25,000 hours. Suitable for all indoor residential and commercial applications.'},
-            {id:'SKU-014',name:'LED Tube Light 18W Cool White',category:'electrical',catName:'Electrical',price:120.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Tube-Light-PNG-File.png',specs:['Wattage: 18W (equiv. 40W fluorescent)','Color: Cool White 6500K','Length: 4ft (1200mm)','Lumens: 1800 lm','Lifespan: 30,000 hours'],desc:'18W LED tube light replacing traditional 40W fluorescent tubes. Cool white 6500K color temperature ideal for offices, kitchens, and workspaces. Easy plug-and-play installation.'},
-            {id:'SKU-015',name:'Electrical Switch 2-Gang White',category:'electrical',catName:'Electrical',price:35.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Electrical-Switch-Transparent-Background.png',specs:['Type: 2-Gang 1-Way','Color: White','Material: Fire-retardant PC','Rating: 10A 250V','Standard: BS Standard'],desc:'Standard 2-gang 1-way electrical switch made from fire-retardant polycarbonate. Suitable for residential and commercial wiring. Silver alloy contacts ensure reliable switching.'},
-            {id:'SKU-016',name:'Electric Cable 2.5mm (per meter)',category:'electrical',catName:'Electrical',price:15.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Electric-Cable-PNG-Pic.png',specs:['Size: 2.5mm','Conductor: Copper','Insulation: PVC','Rating: 27A','Color: Blue/Brown/Yellow-green'],desc:'2.5mm copper conductor PVC insulated cable suitable for fixed wiring in domestic and commercial installations. Rated for up to 27A. Available in multiple colors.'},
-            {id:'SKU-017',name:'MCB Single Pole 16A',category:'electrical',catName:'Electrical',price:85.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/11/s-l1600.png',specs:['Poles: 1','Rating: 16A','Breaking Capacity: 6kA','Curve: C','Type: Miniature Circuit Breaker'],desc:'Single pole 16A MCB with 6kA breaking capacity. C-curve suitable for general domestic applications. Provides overload and short-circuit protection for electrical circuits.'},
-            {id:'SKU-018',name:'PVC Pipe 2" x 3m Schedule 40',category:'plumbing',catName:'Plumbing',price:85.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/10/PVC-Fits-472x315.jpg',specs:['Size: 2 inch (50mm)','Length: 3 meters','Schedule: 40','Material: uPVC','Pressure: PN10'],desc:'High-quality uPVC pipe manufactured in Thailand. Schedule 40 thickness suitable for cold water supply, drainage, and general plumbing applications. UV-resistant for outdoor use.'},
-            {id:'SKU-019',name:'PVC Elbow 90 2"',category:'plumbing',catName:'Plumbing',price:25.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/10/PVC-Fits-472x315.jpg',specs:['Size: 2 inch (50mm)','Angle: 90','Material: uPVC','Type: Plain End','Color: Grey'],desc:'uPVC 90-degree elbow fitting for 2-inch pipes. Used to change direction in plumbing systems. Solvent weld connection provides strong, leak-proof joints.'},
-            {id:'SKU-020',name:'PVC End Cap 2"',category:'plumbing',catName:'Plumbing',price:18.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/10/PVC-Fits-472x315.jpg',specs:['Size: 2 inch (50mm)','Material: uPVC','Type: Plain End','Color: Grey','Pressure: PN10'],desc:'uPVC end cap for sealing 2-inch pipe ends. Ideal for closing off unused pipe runs or creating test points. Solvent weld for permanent seal.'},
-            {id:'SKU-021',name:'Epoxy Adhesive 500ml Clear',category:'adhesives',catName:'Adhesives',price:120.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/vt6.png',specs:['Volume: 500ml','Type: Two-part Epoxy','Color: Clear','Setting Time: 5 minutes','Cure Time: 24 hours'],desc:'High-strength two-part epoxy adhesive that dries crystal clear. Bonds metal, wood, glass, ceramic, and most plastics. Waterproof and heat-resistant once cured. Ideal for repairs and crafts.'},
-            {id:'SKU-022',name:'Silicone Sealant 300ml White',category:'adhesives',catName:'Adhesives',price:65.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/vt7.png',specs:['Volume: 300ml','Type: Acetic Cure Silicone','Color: White','Temperature: -40C to 150C','Paintable: No'],desc:'Multi-purpose white silicone sealant for kitchen, bathroom, and general sealing applications. Waterproof, flexible, and mold-resistant. Suitable for ceramic, glass, and metal surfaces.'},
-            {id:'SKU-023',name:'Construction Adhesive 600ml',category:'adhesives',catName:'Adhesives',price:95.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/vt8.png',specs:['Volume: 600ml','Type: Hybrid Polymer','Color: White','Gap Fill: Up to 10mm','Paintable: Yes'],desc:'Professional-grade construction adhesive with hybrid polymer technology. Bonds wood, concrete, brick, metal, and plastics. Paintable and suitable for both interior and exterior use.'},
-            {id:'SKU-024',name:'Super Glue 3g Tube',category:'adhesives',catName:'Adhesives',price:25.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/vt1.png',specs:['Volume: 3g','Type: Cyanoacrylate','Setting Time: 10 seconds','Cure Time: 12 hours','Color: Clear'],desc:'Fast-acting cyanoacrylate super glue that bonds in seconds. Ideal for small repairs on metal, rubber, plastic, and ceramic. One drop holds up to one ton in ideal conditions.'},
-            {id:'SKU-025',name:'Solex Door Lock SL-200',category:'locks',catName:'Locks',price:350.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/2.png',specs:['Brand: Solex','Type: Cylindrical','Backset: 60mm','Material: Brass','Finish: Satin Nickel'],desc:'Solex SL-200 cylindrical door lock with satin nickel finish. Precision-engineered brass mechanism for smooth operation. Suitable for bedroom and bathroom doors. Includes 3 keys.'},
-            {id:'SKU-026',name:'Solex Padlock 50mm Heavy Duty',category:'locks',catName:'Locks',price:180.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/3.png',specs:['Brand: Solex','Size: 50mm','Material: Hardened Steel','Shackle: Boron Carbide','Keys: 3'],desc:'Solex heavy-duty 50mm padlock with hardened steel body and boron carbide shackle. Weather-resistant for outdoor use on gates, warehouses, and storage units. Drill and pick resistant.'},
-            {id:'SKU-027',name:'Solex Deadbolt Lock',category:'locks',catName:'Locks',price:420.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/4.png',specs:['Brand: Solex','Type: Deadbolt','Backset: 65mm','Material: Steel','Throw: 25mm'],desc:'Solex deadbolt lock providing maximum security for external doors. Solid steel bolt with 25mm throw resists forced entry. Compatible with most standard door preparations.'},
-            {id:'SKU-028',name:'Ascerta Vintage Oak Flooring (per m)',category:'flooring',catName:'Flooring',price:280.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/3359_Ascerta_Vintage_Oak-1-1024x1024.jpg',specs:['Brand: Ascerta','Style: Vintage Oak','Thickness: 2.5mm','Wear Layer: 0.3mm','Size: 1.2m x 0.19m'],desc:'Ascerta Vintage Oak luxury vinyl flooring. Authentic wood look with textured grain pattern. Easy click-installation system. Waterproof, scratch-resistant, and suitable for kitchens, bathrooms, and living areas.'},
-            {id:'SKU-029',name:'Ascerta Farmhouse Flooring (per m)',category:'flooring',catName:'Flooring',price:310.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/3346_Ascerta_Farmhouse-1-1024x1021.jpg',specs:['Brand: Ascerta','Style: Farmhouse','Thickness: 3mm','Wear Layer: 0.5mm','Size: 1.2m x 0.19m'],desc:'Ascerta Farmhouse luxury vinyl flooring with rustic wood-look finish. Thicker 3mm construction with 0.5mm wear layer for heavy traffic areas. Easy to clean and maintain.'},
-            {id:'SKU-030',name:'Ascerta Rustic Plank (per m)',category:'flooring',catName:'Flooring',price:260.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/3312_Ascerta_Rustic_Plank-1-1024x1024.jpg',specs:['Brand: Ascerta','Style: Rustic Plank','Thickness: 2.5mm','Wear Layer: 0.3mm','Size: 1.2m x 0.19m'],desc:'Ascerta Rustic Plank flooring with distressed wood appearance. Warm tones ideal for traditional interiors. Cushioned backing provides comfort underfoot and sound insulation.'},
-            {id:'SKU-031',name:'Aluminium Extrusion T-Profile 2m',category:'aluminium',catName:'Aluminium',price:220.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/07/profile2-525x350.jpg',specs:['Shape: T-Profile','Length: 2 meters','Material: 6063 Aluminium','Finish: Mill','Weight: 0.8 kg/m'],desc:'T-profile aluminium extrusion suitable for framing, tracks, and structural applications. 6063 grade aluminium offers good corrosion resistance and strength. Can be cut, drilled, and machined.'},
-            {id:'SKU-032',name:'Aluminium Angle 25x25mm x 3m',category:'aluminium',catName:'Aluminium',price:180.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/07/profile2-525x350.jpg',specs:['Size: 25x25mm','Thickness: 2mm','Length: 3 meters','Material: 6063 Aluminium','Finish: Mill'],desc:'Aluminium angle profile 25x25mm with 2mm wall thickness. Versatile structural component for frames, brackets, and supports. Lightweight yet strong. Easy to drill and cut.'},
-            {id:'SKU-033',name:'Acrylic Sheet Clear 3mm 1.2x2.4m',category:'acrylic',catName:'Acrylic',price:450.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/11/Untitled1-2-525x350.png',specs:['Thickness: 3mm','Size: 1.2m x 2.4m','Color: Clear','Material: PMMA','Light Transmission: 92%'],desc:'Clear acrylic (PMMA) sheet with excellent optical clarity. UV-resistant and weatherproof. Suitable for signage, displays, glazing, and DIY projects. Easier to work with than glass.'},
-            {id:'SKU-034',name:'Acrylic Sheet White 5mm 1.2x2.4m',category:'acrylic',catName:'Acrylic',price:650.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/11/Untitled1-2-525x350.png',specs:['Thickness: 5mm','Size: 1.2m x 2.4m','Color: Opaque White','Material: PMMA','Sheet Type: Cast'],desc:'Opaque white cast acrylic sheet, 5mm thick. Ideal for signage, lightboxes, bathroom panels, and kitchen splashbacks. Easy to clean and maintain. Resistant to chemicals and weathering.'},
-            {id:'SKU-035',name:'Gondola Rack Double-Sided 180cm',category:'racks',catName:'Racks',price:2800.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2-525x350.jpg',specs:['Height: 180cm','Type: Double-Sided','Shelves: 8 per side','Material: Steel','Color: White'],desc:'Double-sided gondola rack for retail display. Each side has 4 adjustable shelves. Powder-coated steel construction for durability. Ideal for supermarkets, pharmacies, and retail stores.'},
-            {id:'SKU-036',name:'Boltless Shelving 4-Tier 90x45x180cm',category:'racks',catName:'Racks',price:1500.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2-525x350.jpg',specs:['Tiers: 4','Size: 90x45x180cm','Capacity: 150kg/shelf','Material: Steel','Assembly: Boltless'],desc:'Boltless shelving unit that assembles in minutes without tools. Each shelf holds up to 150kg. Versatile storage solution for warehouse, office, garage, or home use.'},
-            {id:'SKU-037',name:'High-Pressure Laminate Sheet 1.2x2.4m',category:'laminates',catName:'Laminates',price:350.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2ss-525x350.png',specs:['Size: 1.2m x 2.4m','Thickness: 0.8mm','Type: HPL','Finish: Matt','Fire Rating: Class B1'],desc:'High-pressure laminate (HPL) sheet for interior surfaces. Scratch, heat, and moisture resistant. Suitable for kitchen countertops, furniture, wall paneling, and commercial interiors.'},
-            {id:'SKU-038',name:'Furniture Handle Modern Brushed Nickel',category:'laminates',catName:'Laminates',price:45.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/11/Untitled-2ss-525x350.png',specs:['Material: Zinc Alloy','Finish: Brushed Nickel','Length: 128mm','Hole Spacing: 96mm','Includes: Screws'],desc:'Modern brushed nickel furniture handle suitable for cabinets, drawers, and wardrobes. Zinc alloy construction with durable brushed nickel finish. Includes mounting screws for easy installation.'}
+            {id:'SKU-001',name:'PATTA Wood Screw 4x40mm (100 pcs)',category:'fasteners',catName:'Fasteners',price:45.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_ms.png',specs:['Size: 4x40mm','Material: Steel','Qty: 100 pcs','Head: Countersunk','Drive: Phillips'],desc:'High-quality PATTA brand wood screws ideal for general woodworking, furniture assembly, and construction. Countersunk head provides a flush finish.'},
+            {id:'SKU-002',name:'PATTA Drywall Screw 3.5x25mm (200 pcs)',category:'fasteners',catName:'Fasteners',price:65.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_drywall-coarse.png',specs:['Size: 3.5x25mm','Material: Steel','Qty: 200 pcs','Head: Bugle','Drive: Phillips'],desc:'PATTA drywall screws designed for attaching drywall to wood or metal studs. Bugle head prevents tearing of drywall paper.'},
+            {id:'SKU-003',name:'PATTA Chipboard Screw 5x50mm (100 pcs)',category:'fasteners',catName:'Fasteners',price:85.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_chipboard.png',specs:['Size: 5x50mm','Material: Steel','Qty: 100 pcs','Head: Countersunk','Drive: Pozidriv'],desc:'PATTA chipboard screws with coarse thread for maximum grip in particle board, MDF, and chipboard. Ideal for furniture assembly.'},
+            {id:'SKU-004',name:'SDS Bugle Head Screw 4.2x75mm (50 pcs)',category:'fasteners',catName:'Fasteners',price:120.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/sds_BUGLE-H.png',specs:['Size: 4.2x75mm','Material: Steel','Qty: 50 pcs','Head: Bugle','Drive: Phillips'],desc:'SDS bugle head screws for heavy-duty timber construction. Extra-long 75mm length for structural applications.'},
+            {id:'SKU-005',name:'DIN 7997 Countersunk Screw M6x70mm',category:'fasteners',catName:'Fasteners',price:55.00,stock:'out',image:'https://selbymv.com/wp-content/uploads/2019/04/screws_din7997.png',specs:['Size: M6x70mm','Material: Stainless Steel','Head: Countersunk','Drive: Torx','Standard: DIN 7997'],desc:'German standard stainless steel countersunk screws. Corrosion-resistant for outdoor and marine use.'},
+            {id:'SKU-006',name:'Confirmat Screw 7x50mm (50 pcs)',category:'fasteners',catName:'Fasteners',price:75.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/05/screws_confirmat_1.png',specs:['Size: 7x50mm','Material: Steel','Qty: 50 pcs','Head: Flat','Drive: Hex'],desc:'Confirmat screws for furniture assembly. Wide thread provides excellent grip in particle board.'},
+            {id:'SKU-007',name:'Rotary Hammer ARH10-20 800W',category:'powertools',catName:'Power Tools',price:1250.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0024_ac-rotaryhammer-ARH10-20.png',specs:['Power: 800W','Impact: 2.0 Joules','Weight: 4.2 kg','Chuck: SDS-Plus','Speed: 0-1200 RPM'],desc:'Professional rotary hammer for concrete, brick, and stone. SDS-Plus chuck, anti-vibration technology.'},
+            {id:'SKU-008',name:'Rotary Hammer ARH09-30 900W',category:'powertools',catName:'Power Tools',price:1450.00,stock:'low',image:'https://selbymv.com/wp-content/uploads/2019/04/0023_ac-rotaryhammer-ARH09-30.png',specs:['Power: 900W','Impact: 3.0 Joules','Weight: 5.1 kg','Chuck: SDS-Plus','Speed: 0-1100 RPM'],desc:'Heavy-duty rotary hammer with 3.0 joules impact for demolition and reinforced concrete drilling.'},
+            {id:'SKU-009',name:'Heat Gun 2000W Professional',category:'powertools',catName:'Power Tools',price:450.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0018_ac-heat-gun.png',specs:['Power: 2000W','Temp: 50-600C','Airflow: 250-500 L/min','Weight: 0.8 kg','Cable: 3m'],desc:'Professional heat gun with variable temperature. For paint stripping, plastic welding, and adhesive removal.'},
+            {id:'SKU-010',name:'Electric Drill AEL03-10 500W',category:'powertools',catName:'Power Tools',price:680.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/0015_ac-drill-AEL03-10.png',specs:['Power: 500W','Chuck: 10mm','Speed: 0-2800 RPM','Weight: 1.5 kg','Cable: 2m'],desc:'Compact 500W electric drill for wood, metal, and plastic. Lightweight for overhead work.'},
+            {id:'SKU-011',name:'Heavy Duty Pipe Wrench 18"',category:'powertools',catName:'Power Tools',price:320.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Pipe-Wrench-PNG-Image.png',specs:['Length: 18 inch','Capacity: 2 inch pipe','Material: Cast Iron','Handle: Ergonomic','Jaw: Replaceable'],desc:'Heavy-duty pipe wrench for gripping and turning pipes. Replaceable jaw for extended tool life.'},
+            {id:'SKU-012',name:'Plier Set 3-Piece Professional',category:'powertools',catName:'Power Tools',price:180.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/Plier-PNG-HD-Quality.png',specs:['Pieces: 3','Types: Combination, Long Nose, Side Cut','Material: Chrome Vanadium','Handle: Non-slip'],desc:'Professional 3-piece plier set. Chrome vanadium steel with comfortable non-slip handles.'},
+            {id:'SKU-013',name:'LED Bulb 12W Warm White',category:'electrical',catName:'Electrical',price:65.00,stock:'in',image:'https://selbymv.com/wp-content/uploads/2019/04/LED-Bulb-PNG-Photos.png',specs:['Wattage: 12W (75W equiv)','Color: Warm White 3000K','Lumens: 1050 lm','Base: E27','Life: 25,000 hrs'],desc:'Energy-efficient LED bulb. Long lifespan, suitable for all indoor applications.'}
         ];
 
         var activeCategory = 'all';
-        var activeCategoryName = 'All Categories';
 
-        function toggleCategoryDropdown() { document.getElementById('categoryDropdown').classList.toggle('open'); }
+        function toggleCategoryDropdown() {
+            var d = document.getElementById('categoryDropdown');
+            if (d) d.classList.toggle('open');
+        }
 
         document.addEventListener('click', function(e) {
             var d = document.getElementById('categoryDropdown');
             var b = document.getElementById('categoryDropdownBtn');
-            if (d && b && !d.contains(e.target) && !b.contains(e.target)) { d.classList.remove('open'); }
+            if (d && b && !d.contains(e.target) && !b.contains(e.target)) d.classList.remove('open');
         });
 
         function selectCategory(cat, name, btn) {
             activeCategory = cat;
-            activeCategoryName = name;
             document.getElementById('currentCategoryLabel').textContent = name;
             document.getElementById('breadcrumbCategory').textContent = name;
             document.getElementById('categoryDropdown').classList.remove('open');
             document.querySelectorAll('.category-option').forEach(function(b) { b.classList.remove('active'); });
             if (btn) btn.classList.add('active');
             var url = new URL(window.location);
-            if (cat === 'all') { url.searchParams.delete('category'); }
-            else { url.searchParams.set('category', cat); }
+            if (cat === 'all') url.searchParams.delete('category');
+            else url.searchParams.set('category', cat);
             window.history.replaceState({}, '', url);
             filterProducts();
         }
 
         function filterProducts() {
-            var search = document.getElementById('productSearch').value.toLowerCase();
+            var search = (document.getElementById('productSearch').value || '').toLowerCase();
             var filtered = products.filter(function(p) {
                 if (activeCategory !== 'all' && p.category !== activeCategory) return false;
-                if (search && !p.name.toLowerCase().includes(search) && !p.id.toLowerCase().includes(search) && !p.catName.toLowerCase().includes(search)) return false;
+                if (search && p.name.toLowerCase().indexOf(search) === -1 && p.id.toLowerCase().indexOf(search) === -1) return false;
                 return true;
             });
             renderProducts(filtered);
@@ -217,37 +193,41 @@
             document.getElementById('resultCount').textContent = arr.length;
             var grid = document.getElementById('productGrid');
             if (arr.length === 0) {
-                grid.innerHTML = '<div class="no-products"><p>No products found.</p><p>Try a different search or <a href="contact-us.html">contact us</a>.</p></div>';
+                grid.innerHTML = '<div class="no-products"><p>No products found.</p><p><a href="contact-us.html">Contact us</a> for more options.</p></div>';
                 return;
             }
-            grid.innerHTML = arr.map(function(p, index) {
+            var html = '';
+            for (var i = 0; i < arr.length; i++) {
+                var p = arr[i];
                 var sl = p.stock === 'in' ? 'In Stock' : p.stock === 'low' ? 'Low Stock' : 'Out of Stock';
                 var sc = p.stock === 'in' ? 'in-stock' : p.stock === 'low' ? 'low-stock' : 'out-stock';
-                var pf = 'MVR ' + p.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                return '<div class="product-card-veligaa fade-in-up">' +
+                var pf = 'MVR ' + p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                html += '<div class="product-card-veligaa fade-in-up">' +
                     '<div class="product-card-img-wrap">' +
-                        '<a href="javascript:void(0)" class="product-card-img-link" onclick="openProductPopup(' + index + ')"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></a>' +
+                        '<a href="javascript:void(0)" class="product-card-img-link" onclick="openProductPopup(' + i + ')"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></a>' +
                         '<span class="stock-badge-veligaa ' + sc + '">' + sl + '</span>' +
                     '</div>' +
                     '<div class="product-card-info">' +
                         '<span class="product-sku-veligaa">' + p.id + '</span>' +
-                        '<h3 class="product-name-veligaa"><a href="javascript:void(0)" onclick="openProductPopup(' + index + ')" style="color:#303030;text-decoration:none;">' + p.name + '</a></h3>' +
+                        '<h3 class="product-name-veligaa"><a href="javascript:void(0)" onclick="openProductPopup(' + i + ')" style="color:#303030;text-decoration:none;">' + p.name + '</a></h3>' +
                         '<p class="product-price-veligaa">' + pf + '</p>' +
                         '<div class="product-actions-veligaa">' +
-                            '<a href="https://api.whatsapp.com/send?phone=9603323002&text=I\'m%20interested%20in%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>' +
+                            '<a href="https://api.whatsapp.com/send?phone=9603323002&text=Enquiry%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>' +
                             '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>' +
                         '</div>' +
                     '</div>' +
                 '</div>';
-            }).join('');
+            }
+            grid.innerHTML = html;
         }
 
         window.openProductPopup = function(index) {
             var p = products[index];
             var sl = p.stock === 'in' ? 'In Stock' : p.stock === 'low' ? 'Low Stock' : 'Out of Stock';
             var sc = p.stock === 'in' ? 'in-stock' : p.stock === 'low' ? 'low-stock' : 'out-stock';
-            var pf = 'MVR ' + p.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            var specsHtml = p.specs.map(function(s) { return '<li>' + s + '</li>'; }).join('');
+            var pf = 'MVR ' + p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            var specsHtml = '';
+            for (var i = 0; i < p.specs.length; i++) { specsHtml += '<li>' + p.specs[i] + '</li>'; }
             var html = '<div class="popup-layout">' +
                 '<div class="popup-image"><img src="' + p.image + '" alt="' + p.name + '"></div>' +
                 '<div class="popup-details">' +
@@ -258,8 +238,8 @@
                     '<div class="popup-section"><h3>Description</h3><p>' + p.desc + '</p></div>' +
                     '<div class="popup-section"><h3>Specifications</h3><ul class="popup-specs">' + specsHtml + '</ul></div>' +
                     '<div class="popup-actions">' +
-                        '<a href="https://api.whatsapp.com/send?phone=9603323002&text=I\'m%20interested%20in%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp Enquiry</a>' +
-                        '<a href="tel:+9603328583" class="btn-call-veligaa"> Call Now</a>' +
+                        '<a href="https://api.whatsapp.com/send?phone=9603323002&text=Enquiry%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>' +
+                        '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>' +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -274,29 +254,25 @@
             document.body.style.overflow = '';
         };
 
-        // Init from URL
+        // Init
         (function() {
             var params = new URLSearchParams(window.location.search);
             var catParam = params.get('category');
             if (catParam) {
                 var buttons = document.querySelectorAll('.category-option');
                 buttons.forEach(function(btn) {
-                    var onclickAttr = btn.getAttribute('onclick') || '';
-                    if (onclickAttr.indexOf("'" + catParam + "'") !== -1) {
+                    if ((btn.getAttribute('onclick') || '').indexOf("'" + catParam + "'") !== -1) {
                         activeCategory = catParam;
-                        var label = btn.textContent.trim();
-                        document.getElementById('currentCategoryLabel').textContent = label;
-                        document.getElementById('breadcrumbCategory').textContent = label;
+                        document.getElementById('currentCategoryLabel').textContent = btn.textContent.trim();
+                        document.getElementById('breadcrumbCategory').textContent = btn.textContent.trim();
                         buttons.forEach(function(b) { b.classList.remove('active'); });
                         btn.classList.add('active');
                     }
                 });
-                filterProducts();
-            } else {
-                filterProducts();
             }
+            filterProducts();
         })();
     </script>
-    <script src="js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
