@@ -188,72 +188,78 @@
             });
             renderProducts(filtered);
         }
-
-        function renderProducts(arr) {
-            document.getElementById('resultCount').textContent = arr.length;
-            var grid = document.getElementById('productGrid');
-            if (arr.length === 0) {
-                grid.innerHTML = '<div class="no-products"><p>No products found.</p><p><a href="contact-us.html">Contact us</a> for more options.</p></div>';
-                return;
-            }
-            var html = '';
-            for (var i = 0; i < arr.length; i++) {
-                var p = arr[i];
-                var sl = p.stock === 'in' ? 'In Stock' : p.stock === 'low' ? 'Low Stock' : 'Out of Stock';
-                var sc = p.stock === 'in' ? 'in-stock' : p.stock === 'low' ? 'low-stock' : 'out-stock';
-                var pf = 'MVR ' + p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                html += '<div class="product-card-veligaa fade-in-up">' +
-                    '<div class="product-card-img-wrap">' +
-                        '<a href="javascript:void(0)" class="product-card-img-link" onclick="openProductPopup(' + i + ')"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></a>' +
-                        '<span class="stock-badge-veligaa ' + sc + '">' + sl + '</span>' +
-                    '</div>' +
-                    '<div class="product-card-info">' +
-                        '<span class="product-sku-veligaa">' + p.id + '</span>' +
-                        '<h3 class="product-name-veligaa"><a href="javascript:void(0)" onclick="openProductPopup(' + i + ')" style="color:#303030;text-decoration:none;">' + p.name + '</a></h3>' +
-                        '<p class="product-price-veligaa">' + pf + '</p>' +
-                        '<div class="product-actions-veligaa">' +
-                            '<a href="https://api.whatsapp.com/send?phone=9603323002&text=Enquiry%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>' +
-                            '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>' +
-                        '</div>' +
-                    '</div>' +
-                '</div>';
-            }
-            grid.innerHTML = html;
-        }
-
-        window.openProductPopup = function(index) {
-            var p = products[index];
-            var sl = p.stock === 'in' ? 'In Stock' : p.stock === 'low' ? 'Low Stock' : 'Out of Stock';
-            var sc = p.stock === 'in' ? 'in-stock' : p.stock === 'low' ? 'low-stock' : 'out-stock';
-            var pf = 'MVR ' + p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            var specsHtml = '';
-            for (var i = 0; i < p.specs.length; i++) { specsHtml += '<li>' + p.specs[i] + '</li>'; }
-            var html = '<div class="popup-layout">' +
-                '<div class="popup-image"><img src="' + p.image + '" alt="' + p.name + '"></div>' +
-                '<div class="popup-details">' +
-                    '<span class="stock-badge-veligaa ' + sc + '" style="position:static;display:inline-block;margin-bottom:10px;">' + sl + '</span>' +
-                    '<h2>' + p.name + '</h2>' +
-                    '<p class="popup-sku">' + p.id + '</p>' +
-                    '<p class="popup-price">' + pf + '</p>' +
-                    '<div class="popup-section"><h3>Description</h3><p>' + p.desc + '</p></div>' +
-                    '<div class="popup-section"><h3>Specifications</h3><ul class="popup-specs">' + specsHtml + '</ul></div>' +
-                    '<div class="popup-actions">' +
-                        '<a href="https://api.whatsapp.com/send?phone=9603323002&text=Enquiry%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>' +
-                        '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>' +
-                    '</div>' +
+function renderProducts(arr) {
+    document.getElementById('resultCount').textContent = arr.length;
+    var grid = document.getElementById('productGrid');
+    if (arr.length === 0) {
+        grid.innerHTML = '<div class="no-products"><p>No products found.</p><p><a href="contact-us.html">Contact us</a> for more options.</p></div>';
+        return;
+    }
+    var html = '';
+    for (var i = 0; i < arr.length; i++) {
+        var p = arr[i];
+        var sl = p.stock === 'in' ? 'In Stock' : p.stock === 'low' ? 'Low Stock' : 'Out of Stock';
+        var sc = p.stock === 'in' ? 'in-stock' : p.stock === 'low' ? 'low-stock' : 'out-stock';
+        var pf = 'MVR ' + p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        html += '<div class="product-card-veligaa fade-in-up">' +
+            '<div class="product-card-img-wrap">' +
+                '<a href="javascript:void(0)" class="product-card-img-link" onclick="openProductPopup(\'' + p.id + '\')"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></a>' +
+                '<span class="stock-badge-veligaa ' + sc + '">' + sl + '</span>' +
+            '</div>' +
+            '<div class="product-card-info">' +
+                '<span class="product-sku-veligaa">' + p.id + '</span>' +
+                '<h3 class="product-name-veligaa"><a href="javascript:void(0)" onclick="openProductPopup(\'' + p.id + '\')" style="color:#303030;text-decoration:none;">' + p.name + '</a></h3>' +
+                '<p class="product-price-veligaa">' + pf + '</p>' +
+                '<div class="product-actions-veligaa">' +
+                    '<a href="https://api.whatsapp.com/send?phone=9603323002&text=Enquiry%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>' +
+                    '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>' +
                 '</div>' +
-            '</div>';
-            document.getElementById('popupBody').innerHTML = html;
-            document.getElementById('productPopup').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        };
+            '</div>' +
+        '</div>';
+    }
+    grid.innerHTML = html;
+}
 
-        window.closeProductPopup = function(event) {
-            if (event && event.target !== document.getElementById('productPopup')) return;
-            document.getElementById('productPopup').classList.remove('open');
-            document.body.style.overflow = '';
-        };
+// Find product by ID and show popup
+window.openProductPopup = function(productId) {
+    var p = null;
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === productId) {
+            p = products[i];
+            break;
+        }
+    }
+    if (!p) return;
+    var sl = p.stock === 'in' ? 'In Stock' : p.stock === 'low' ? 'Low Stock' : 'Out of Stock';
+    var sc = p.stock === 'in' ? 'in-stock' : p.stock === 'low' ? 'low-stock' : 'out-stock';
+    var pf = 'MVR ' + p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    var specsHtml = '';
+    for (var j = 0; j < p.specs.length; j++) { specsHtml += '<li>' + p.specs[j] + '</li>'; }
+    var html = '<div class="popup-layout">' +
+        '<div class="popup-image"><img src="' + p.image + '" alt="' + p.name + '"></div>' +
+        '<div class="popup-details">' +
+            '<span class="stock-badge-veligaa ' + sc + '" style="position:static;display:inline-block;margin-bottom:10px;">' + sl + '</span>' +
+            '<h2>' + p.name + '</h2>' +
+            '<p class="popup-sku">' + p.id + '</p>' +
+            '<p class="popup-price">' + pf + '</p>' +
+            '<div class="popup-section"><h3>Description</h3><p>' + p.desc + '</p></div>' +
+            '<div class="popup-section"><h3>Specifications</h3><ul class="popup-specs">' + specsHtml + '</ul></div>' +
+            '<div class="popup-actions">' +
+                '<a href="https://api.whatsapp.com/send?phone=9603323002&text=Enquiry%20' + encodeURIComponent(p.name) + '%20(' + p.id + ')" target="_blank" class="btn-whatsapp-veligaa"> WhatsApp</a>' +
+                '<a href="tel:+9603328583" class="btn-call-veligaa"> Call</a>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+    document.getElementById('popupBody').innerHTML = html;
+    document.getElementById('productPopup').classList.add('open');
+    document.body.style.overflow = 'hidden';
+};
 
+window.closeProductPopup = function(event) {
+    if (event && event.target !== document.getElementById('productPopup')) return;
+    document.getElementById('productPopup').classList.remove('open');
+    document.body.style.overflow = '';
+};
         // Init
         (function() {
             var params = new URLSearchParams(window.location.search);
