@@ -1761,3 +1761,8 @@ ul {
     .popup-details { padding: 20px; }
     .product-popup-content { margin: 20px 15px; }
 }
+
+.product-card-veligaa,
+.product-grid-veligaa .product-card-veligaa {
+    opacity: 1 !important;
+}
