@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e4002b">
+    <meta name="description" content="Sign up for exclusive DIY tips, discounts, and new product alerts. Get 10% off your next purchase at Selby Star 1 or Selby Drive.">
+    <title>Get 10% Off – Selbymv Email Sign-Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            color: #303030;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .top-bar {
+            background: #1a1a1a;
+            padding: 8px 40px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .top-bar-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .left-widgets, .right-widgets {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .soc-ico a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+
+        .mini-contacts {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-bar {
+            background: #2a2a2a;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .branding img {
+            height: 50px;
+        }
+
+        .main-nav {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover,
+        .main-nav .current-menu-item a {
+            color: #e4002b;
+        }
+
+        /* Page Banner */
+        .page-banner {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .banner-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Sign-Up Form */
+        .signup-section {
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .signup-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .signup-badge {
+            background: #e4002b;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .signup-card h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #303030;
+        }
+
+        .signup-subheadline {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #303030;
+        }
+
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: #e4002b;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: #666;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #e4002b;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #b30022;
+        }
+
+        .privacy-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .privacy-note a {
+            color: #e4002b;
+            text-decoration: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            padding: 40px 0 20px;
+        }
+
+        .footer-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .footer-nav {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 8px;
+        }
+
+        .footer-nav a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer-nav a:hover {
+            color: #e4002b;
+        }
+
+        .bottom-bar {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar, .header-bar {
+                padding: 10px 20px;
+            }
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .banner-title {
+                font-size: 32px;
+            }
+            .signup-card {
+                padding: 25px;
+            }
+            .signup-card h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <header class="masthead" role="banner">
+            <div class="top-bar">
+                <div class="top-bar-inner">
+                    <div class="left-widgets">
+                        <div class="soc-ico">
+                            <a title="Facebook" href="https://www.facebook.com/selbymv/" target="_blank">Facebook</a>
+                            <a title="Email" href="mailto:sales@selbymv.com">Email</a>
+                            <a title="WhatsApp" href="https://api.whatsapp.com/send?phone=9603323002" target="_blank">WhatsApp</a>
+                        </div>
+                        <div class="text-area"><p><b>Why Pay More?</b></p></div>
+                    </div>
+                    <div class="right-widgets">
+                        <span class="mini-contacts">📞 +960 332-8583</span>
+                        <span class="mini-contacts">✉ sales@selbymv.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bar">
+                <div class="branding"><a href="index.html"><img src="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png" width="46" height="60" alt="Selbymv"></a></div>
+                <nav class="main-navigation">
+                    <ul class="main-nav">
+                        <li class="menu-item"><a href="index.html">Home</a></li>
+                        <li class="menu-item"><a href="our-products.html">Our Products</a></li>
+                        <li class="menu-item"><a href="products.html">Price List</a></li>
+                        <li class="menu-item"><a href="premium-brands.html">Premium Brands</a></li>
+                        <li class="menu-item"><a href="about-us.html">About Us</a></li>
+                        <li class="menu-item"><a href="blog.html">DIY Blog</a></li>
+                        <li class="menu-item current-menu-item"><a href="email-signup.html">Get 10% Off</a></li>
+                        <li class="menu-item"><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+            </div>
+        </header>
+
+        <section class="page-banner" style="background-image: url('https://selbymv.com/wp-content/uploads/2019/04/background_3.jpg');">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <h1 class="banner-title">SPECIAL OFFER</h1>
+                <p style="font-size: 18px;">Sign up and save 10% on your next purchase</p>
+            </div>
+        </section>
+
+        <main id="content">
+            <section class="signup-section">
+                <div class="container">
+                    <div class="signup-card">
+                        <div class="signup-badge">🎉 LIMITED TIME</div>
+                        <h2>Get 10% off your next purchase</h2>
+                        <p class="signup-subheadline">Subscribe to receive seasonal DIY tips, exclusive discounts, and new product alerts</p>
+
+                        <div id="successMessage" class="success-message">
+                            ✓ Thanks for subscribing! Check your email for your 10% off coupon code.
+                        </div>
+                        <div id="errorMessage" class="error-message">
+                            ⚠️ Please enter a valid email address and agree to the terms.
+                        </div>
+
+                        <form id="signupForm">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="consent" name="consent">
+                                <label for="consent">
+                                    I agree to receive marketing emails from Selby Star 1 and Selby Drive. 
+                                    I can unsubscribe at any time.
+                                </label>
+                            </div>
+
+                            <button type="submit" class="submit-btn">📧 Send me 10% off →</button>
+                        </form>
+
+                        <p class="privacy-note">
+                            We respect your privacy. Your information will never be shared with third parties. 
+                            <a href="#">Privacy Policy</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-col">
+                        <img src="https://selbymv.com/wp-content/uploads/2019/11/Untitled-1.png" alt="Selby MV" width="263" loading="lazy">
+                        <p>Selby Investments started as a trading company in 1965 in the Republic of Maldives.</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Our Locations</h4>
+                        <p><strong>Selby Drive</strong><br>Mohamed Ismail Didi Magu<br>Phone: +960-332-3002</p>
+                        <p><strong>Selby Star 1</strong><br>Nikagas Magu<br>Phone: +960-332-8583<br>Email: sales@selbymv.com</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="our-products.html">Our Products</a></li>
+                            <li><a href="products.html">Price List</a></li>
+                            <li><a href="blog.html">DIY Blog</a></li>
+                            <li><a href="email-signup.html">Get 10% Off</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-bar"><div class="container"><p>&copy; 2025 Selby MV. All rights reserved.</p></div></div>
+        </footer>
+    </div>
+
+    <script>
+        const signupForm = document.getElementById('signupForm');
+        const successMsg = document.getElementById('successMessage');
+        const errorMsg = document.getElementById('errorMessage');
+
+        // Hide messages initially
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const consent = document.getElementById('consent').checked;
+
+            // Simple email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                errorMsg.style.display = 'block';
+                successMsg.style.display = 'none';
+                setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
+                return;
+            }
+
+            if (!consent) {
+                errorMsg.textContent = '⚠️ Please agree to receive marketing emails to continue.';
+                errorMsg.style.display = 'block';
+                successMsg.style.display = 'none';
+                setTimeout(() => { errorMsg.style.display = 'none'; errorMsg.textContent = '⚠️ Please enter a valid email address and agree to the terms.'; }, 3000);
+                return;
+            }
+
+            // Store email in localStorage (for demonstration)
+            const subscribers = JSON.parse(localStorage.getItem('selby_subscribers') || '[]');
+            if (!subscribers.includes(email)) {
+                subscribers.push(email);
+                localStorage.setItem('selby_subscribers', JSON.stringify(subscribers));
+            }
+
+            // Show success message
+            successMsg.style.display = 'block';
+            errorMsg.style.display = 'none';
+
+            // Reset form
+            signupForm.reset();
+
+            // Optional: Send to backend (replace with actual API endpoint)
+            // fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email, consent }), headers: { 'Content-Type': 'application/json' } });
+
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
