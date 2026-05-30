@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e4002b">
+    <meta name="description" content="DIY tips, home improvement guides, and hardware advice for Maldivian homeowners. Learn how to fix, build, and maintain your home.">
+    <title>DIY Blog – Selbymv</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f5f5f5;
+            color: #303030;
+            line-height: 1.6;
+        }
+
+        /* Header Styles (matching existing site) */
+        .top-bar {
+            background: #1a1a1a;
+            padding: 8px 40px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .top-bar-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .left-widgets, .right-widgets {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .soc-ico a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+
+        .mini-contacts {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-bar {
+            background: #2a2a2a;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .branding img {
+            height: 50px;
+        }
+
+        .main-nav {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover,
+        .main-nav .current-menu-item a {
+            color: #e4002b;
+        }
+
+        /* Page Banner */
+        .page-banner {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+
+        .banner-subtitle {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .banner-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Blog Grid */
+        .section {
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #e4002b;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #303030;
+        }
+
+        .blog-excerpt {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .read-more {
+            color: #e4002b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Single Post View (hidden by default) */
+        .single-post-view {
+            display: none;
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .single-post-view.active {
+            display: block;
+        }
+
+        .back-to-blog {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #e4002b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .single-post-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .single-post-meta {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .single-post-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .single-post-content h3 {
+            margin: 25px 0 15px;
+            color: #303030;
+        }
+
+        .single-post-content ul, 
+        .single-post-content ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        .single-post-content li {
+            margin: 8px 0;
+        }
+
+        .contact-supplies-btn {
+            display: inline-block;
+            background: #e4002b;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: background 0.3s;
+        }
+
+        .contact-supplies-btn:hover {
+            background: #b30022;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            padding: 40px 0 20px;
+        }
+
+        .footer-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .footer-nav {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 8px;
+        }
+
+        .footer-nav a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer-nav a:hover {
+            color: #e4002b;
+        }
+
+        .bottom-bar {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar, .header-bar {
+                padding: 10px 20px;
+            }
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .banner-title {
+                font-size: 32px;
+            }
+            .single-post-view {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <header class="masthead" role="banner">
+            <div class="top-bar">
+                <div class="top-bar-inner">
+                    <div class="left-widgets">
+                        <div class="soc-ico">
+                            <a title="Facebook" href="https://www.facebook.com/selbymv/" target="_blank">Facebook</a>
+                            <a title="Email" href="mailto:sales@selbymv.com">Email</a>
+                            <a title="WhatsApp" href="https://api.whatsapp.com/send?phone=9603323002" target="_blank">WhatsApp</a>
+                        </div>
+                        <div class="text-area"><p><b>Why Pay More?</b></p></div>
+                    </div>
+                    <div class="right-widgets">
+                        <span class="mini-contacts">📞 +960 332-8583</span>
+                        <span class="mini-contacts">✉ sales@selbymv.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bar">
+                <div class="branding"><a href="index.html"><img src="https://selbymv.com/wp-content/uploads/2019/04/logo-1.png" width="46" height="60" alt="Selbymv"></a></div>
+                <nav class="main-navigation">
+                    <ul class="main-nav">
+                        <li class="menu-item"><a href="index.html">Home</a></li>
+                        <li class="menu-item"><a href="our-products.html">Our Products</a></li>
+                        <li class="menu-item"><a href="products.html">Price List</a></li>
+                        <li class="menu-item"><a href="premium-brands.html">Premium Brands</a></li>
+                        <li class="menu-item"><a href="about-us.html">About Us</a></li>
+                        <li class="menu-item current-menu-item"><a href="blog.html">DIY Blog</a></li>
+                        <li class="menu-item"><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+            </div>
+        </header>
+
+        <section class="page-banner" style="background-image: url('https://selbymv.com/wp-content/uploads/2019/04/wall1.png');">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <p class="banner-subtitle">Tips, Guides & How-Tos</p>
+                <h1 class="banner-title">DIY BLOG</h1>
+                <p>Practical home improvement advice for Maldivian homeowners</p>
+            </div>
+        </section>
+
+        <main id="content">
+            <section class="section">
+                <div class="container">
+                    <!-- Blog Listing Grid -->
+                    <div id="blogGrid" class="blog-grid"></div>
+
+                    <!-- Single Post View -->
+                    <div id="singlePostView" class="single-post-view">
+                        <a href="#" class="back-to-blog" id="backToBlog">← Back to all posts</a>
+                        <div id="singlePostContent"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-widgets">
+                    <div class="footer-col">
+                        <img src="https://selbymv.com/wp-content/uploads/2019/11/Untitled-1.png" alt="Selby MV" width="263" loading="lazy">
+                        <p>Selby Investments started as a trading company in 1965 in the Republic of Maldives.</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Our Locations</h4>
+                        <p><strong>Selby Drive</strong><br>Mohamed Ismail Didi Magu<br>Phone: +960-332-3002</p>
+                        <p><strong>Selby Star 1</strong><br>Nikagas Magu<br>Phone: +960-332-8583<br>Email: sales@selbymv.com</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="our-products.html">Our Products</a></li>
+                            <li><a href="products.html">Price List</a></li>
+                            <li><a href="blog.html">DIY Blog</a></li>
+                            <li><a href="email-signup.html">Get 10% Off</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-bar"><div class="container"><p>&copy; 2025 Selby MV. All rights reserved.</p></div></div>
+        </footer>
+    </div>
+
+    <script>
+        // Blog Posts Data
+        const blogPosts = [
+            {
+                id: 1,
+                title: "5 tools every Maldivian homeowner should own",
+                date: "March 15, 2025",
+                excerpt: "From fixing a loose shelf to preparing for monsoon repairs, here are the essential tools that should be in every home in Maldives.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/hardware-tools-500x500.png",
+                content: `
+                    <h2>5 tools every Maldivian homeowner should own</h2>
+                    <p>Living in the Maldives comes with unique home maintenance challenges. Humidity, salt air, and seasonal monsoons mean your home needs regular attention. Here are five essential tools every homeowner should have.</p>
+                    
+                    <h3>1. Cordless Drill/Driver</h3>
+                    <p>A cordless drill is perhaps the most versatile power tool you can own. From hanging curtains to assembling furniture, it saves time and effort. Look for one with at least 18V power and two batteries so you're never left waiting for a charge.</p>
+                    <p><strong>Where to buy:</strong> We stock PATTA and Solex cordless drills at both Selby Drive and Selby Star 1 locations.</p>
+                    
+                    <h3>2. Adjustable Wrench Set</h3>
+                    <p>Plumbing issues are common in Maldivian homes due to hard water and salt corrosion. A set of adjustable wrenches will help you tighten loose connections, replace faucets, and fix leaking pipes.</p>
+                    
+                    <h3>3. Hammer and Nail Set</h3>
+                    <p>A classic claw hammer is essential for hanging pictures, assembling furniture, and minor repairs. Look for one with a fiberglass handle for better shock absorption.</p>
+                    
+                    <h3>4. Utility Knife</h3>
+                    <p>From opening boxes to cutting carpet or vinyl flooring, a sharp utility knife is indispensable. Always keep spare blades on hand.</p>
+                    
+                    <h3>5. Plunger</h3>
+                    <p>Before you need one is the best time to buy a plunger. A flange plunger works best for toilets, while a cup plunger is for sinks and drains.</p>
+                    
+                    <h3>Final Tip</h3>
+                    <p>Store your tools in a dry place away from direct salt air. Wipe metal parts with an oily cloth to prevent rust.</p>
+                `,
+                supplies: ["Cordless Drill", "Adjustable Wrench Set", "Claw Hammer", "Utility Knife", "Plunger"]
+            },
+            {
+                id: 2,
+                title: "How to prepare your home for southwest monsoon",
+                date: "April 3, 2025",
+                excerpt: "The southwest monsoon brings heavy rains and strong winds. Here's how to protect your home and prevent costly damage.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/cracked.png",
+                content: `
+                    <h2>How to prepare your home for southwest monsoon</h2>
+                    <p>The southwest monsoon (Hulhangu) typically arrives in May and lasts through October. Preparation now can save you from water damage, leaks, and structural issues later.</p>
+                    
+                    <h3>Check Your Roof</h3>
+                    <p>Inspect your roof for loose or missing tiles, rusted metal sheets, or cracked sealant around vents and chimneys. Use a silicone sealant rated for outdoor use to patch small gaps before they become big problems.</p>
+                    
+                    <h3>Clean Gutters and Downspouts</h3>
+                    <p>Blocked gutters cause water to overflow, damaging walls and foundations. Remove leaves, debris, and bird nests. Consider installing gutter guards if this is a recurring issue.</p>
+                    
+                    <h3>Seal Windows and Doors</h3>
+                    <p>Apply weatherstripping or silicone caulk around window frames and door thresholds. This prevents water from seeping in and also improves energy efficiency.</p>
+                    
+                    <h3>Trim Overhanging Branches</h3>
+                    <p>Heavy winds can snap branches, damaging roofs, power lines, or windows. Trim any branches that hang over your home.</p>
+                    
+                    <h3>Prepare an Emergency Kit</h3>
+                    <p>Keep flashlights, batteries, a battery-powered radio, first aid supplies, and drinking water accessible. Power outages during storms are common.</p>
+                    
+                    <h3>Inspect Your Sump Pump (if applicable)</h3>
+                    <p>If your home has a basement or ground floor that floods, test your sump pump by pouring water into the pit. Make sure it activates and drains properly.</p>
+                `,
+                supplies: ["Silicone Sealant", "Gutter Cleaning Tools", "Weatherstripping", "Emergency Flashlights"]
+            },
+            {
+                id: 3,
+                title: "DIY: fix a leaking tap in 10 minutes",
+                date: "February 28, 2025",
+                excerpt: "A dripping tap wastes water and money. Fix it yourself in minutes with these simple steps and basic tools.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/upvc-fittings-500x500.png",
+                content: `
+                    <h2>DIY: fix a leaking tap in 10 minutes</h2>
+                    <p>A tap that drips once per second wastes over 3,000 gallons of water per year. Here's how to fix most common tap leaks yourself.</p>
+                    
+                    <h3>Tools You'll Need</h3>
+                    <ul>
+                        <li>Adjustable wrench</li>
+                        <li>Screwdriver (flathead and Phillips)</li>
+                        <li>Replacement washers or O-rings</li>
+                        <li>Plumber's grease</li>
+                        <li>Old rag or towel</li>
+                    </ul>
+                    
+                    <h3>Step 1: Turn Off the Water Supply</h3>
+                    <p>Locate the isolation valve under the sink and turn it clockwise to shut off water to the tap. If there's no isolation valve, turn off the main water supply.</p>
+                    
+                    <h3>Step 2: Remove the Tap Handle</h3>
+                    <p>Pry off the decorative cap (usually marked with hot/cold colors). Unscrew the screw underneath and lift off the handle.</p>
+                    
+                    <h3>Step 3: Remove the Valve Assembly</h3>
+                    <p>Use your wrench to unscrew the valve or cartridge. Keep track of the order of parts as you remove them.</p>
+                    
+                    <h3>Step 4: Replace the Washer or O-ring</h3>
+                    <p>The rubber washer at the bottom of the valve is usually the culprit. Take it to the hardware store to match the correct size, then install the new one.</p>
+                    
+                    <h3>Step 5: Reassemble and Test</h3>
+                    <p>Apply a small amount of plumber's grease to moving parts. Reassemble in reverse order. Turn the water back on slowly and check for leaks.</p>
+                    
+                    <h3>When to Call a Professional</h3>
+                    <p>If the leak persists after replacing washers, or if the tap body itself is cracked, you may need a full tap replacement. Visit our store for a wide selection of quality taps and fixtures.</p>
+                `,
+                supplies: ["Adjustable Wrench", "Replacement Washers", "Plumber's Grease"]
+            },
+            {
+                id: 4,
+                title: "Choosing the right drill for your home projects",
+                date: "January 20, 2025",
+                excerpt: "Corded vs cordless? Hammer drill vs driver? Here's what to consider before buying your first drill.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/0015_ac-drill-AEL03-10.png",
+                content: `
+                    <h2>Choosing the right drill for your home projects</h2>
+                    <p>Walking into a hardware store and seeing dozens of drills can be overwhelming. Here's a simple guide to help you choose.</p>
+                    
+                    <h3>Corded vs Cordless</h3>
+                    <p><strong>Corded drills</strong> offer unlimited runtime and more consistent power. They're ideal for heavy-duty tasks like drilling through masonry or driving many screws. However, you need access to an outlet.</p>
+                    <p><strong>Cordless drills</strong> offer convenience and portability. Modern lithium-ion batteries provide plenty of power for most home tasks. For most homeowners, an 18V cordless drill is the best choice.</p>
+                    
+                    <h3>Hammer Drill vs Standard Drill</h3>
+                    <p>A hammer drill has a pulsating action that helps drill into concrete, brick, or stone. If you plan to hang shelves on tiled walls or concrete, get a hammer drill. For wood and metal only, a standard drill is sufficient.</p>
+                    
+                    <h3>What to Look For</h3>
+                    <ul>
+                        <li><strong>Voltage:</strong> 12V for light tasks, 18V for most home use, 20V+ for heavy work</li>
+                        <li><strong>Chuck Size:</strong> 3/8" for basic tasks, 1/2" for larger bits</li>
+                        <li><strong>Two batteries:</strong> Essential for cordless models so one charges while you work</li>
+                        <li><strong>Variable speed trigger:</strong> Gives you control for different materials</li>
+                    </ul>
+                    
+                    <h3>Recommended Brands at Selby MV</h3>
+                    <p>We stock Solex power tools, known for reliability and good value. For professional use, ask about our premium brands.</p>
+                `,
+                supplies: ["Cordless Drill", "Drill Bit Set", "Screwdriver Bits"]
+            },
+            {
+                id: 5,
+                title: "Painting 101: brushes vs rollers",
+                date: "December 10, 2024",
+                excerpt: "Getting a professional-looking paint job starts with choosing the right applicator. Learn when to use brushes and when to use rollers.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/close-up-equipment-fix-221045.jpg",
+                content: `
+                    <h2>Painting 101: brushes vs rollers</h2>
+                    <p>A great paint job depends as much on your tools as on your technique. Here's how to choose between brushes and rollers.</p>
+                    
+                    <h3>When to Use a Brush</h3>
+                    <ul>
+                        <li><strong>Edges and corners:</strong> Brushes give you precision around trim, windows, and door frames</li>
+                        <li><strong>Cutting in:</strong> Creating a clean line where wall meets ceiling</li>
+                        <li><strong>Small areas:</strong> Touch-ups, furniture, or narrow surfaces</li>
+                        <li><strong>Textured surfaces:</strong> Brushes get into grooves that rollers miss</li>
+                    </ul>
+                    
+                    <h3>When to Use a Roller</h3>
+                    <ul>
+                        <li><strong>Large, flat walls and ceilings:</strong> Rollers cover area much faster</li>
+                        <li><strong>Smooth surfaces:</strong> Rollers leave a smooth, even finish</li>
+                        <li><strong>Exterior walls:</strong> Larger roller covers speed up the job</li>
+                    </ul>
+                    
+                    <h3>Brush Types</h3>
+                    <p><strong>Angled sash brush:</strong> Best for cutting in and trim work. 2-2.5 inches is a good all-purpose size.</p>
+                    <p><strong>Flat brush:</strong> Good for larger flat surfaces and applying thick paints or stains.</p>
+                    
+                    <h3>Roller Nap (Fabric Length)</h3>
+                    <ul>
+                        <li><strong>3/8" nap:</strong> Smooth walls and ceilings</li>
+                        <li><strong>1/2" nap:</strong> Slightly textured walls</li>
+                        <li><strong>3/4" nap:</strong> Rough plaster or brick</li>
+                    </ul>
+                    
+                    <h3>Pro Tips</h3>
+                    <p>Don't skimp on quality. Cheap brushes shed bristles and leave streaks. A good brush, properly cleaned, will last for years.</p>
+                `,
+                supplies: ["Paint Brushes", "Paint Roller Set", "Painter's Tape", "Drop Cloths"]
+            },
+            {
+                id: 6,
+                title: "How to install a shelf on a tiled wall (no drilling)",
+                date: "November 5, 2024",
+                excerpt: "Afraid to drill into expensive tiles? Try these no-drill alternatives for installing shelves in bathrooms and kitchens.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/sds_BUGLE-H.png",
+                content: `
+                    <h2>How to install a shelf on a tiled wall (no drilling)</h2>
+                    <p>Drilling into tiles risks cracking them. Here are three no-drill methods for adding storage to tiled walls.</p>
+                    
+                    <h3>Method 1: Adhesive Shelf Brackets</h3>
+                    <p>Heavy-duty adhesive brackets can hold significant weight when installed correctly. Clean the tile thoroughly with rubbing alcohol. Apply adhesive to the bracket, press firmly against the wall, and hold for 60 seconds. Wait 24 hours before loading the shelf.</p>
+                    <p><strong>Weight limit:</strong> Up to 15kg per bracket with quality adhesive. Ideal for small toiletries and lightweight decorative items.</p>
+                    
+                    <h3>Method 2: Suction Cup Shelves</h3>
+                    <p>Suction cup shelves work best on smooth, clean tiles. They're removable and repositionable, making them perfect for renters. However, they're only suitable for very light items like soap dispensers and small bottles.</p>
+                    
+                    <h3>Method 3: Tension Pole Shelves</h3>
+                    <p>These floor-to-ceiling poles use spring tension to stay in place, with shelves attached. They don't touch the wall at all except at the ceiling and floor. Ideal for corner showers.</p>
+                    
+                    <h3>When Drilling is Unavoidable</h3>
+                    <p>For heavy shelves or expensive items, drilling might still be best. Use a diamond-tipped drill bit, start with a piece of tape to prevent slipping, drill slowly, and never apply pressure.</p>
+                    
+                    <h3>Products We Recommend</h3>
+                    <p>Visit Selby Drive or Selby Star 1 for high-strength construction adhesive and professional-grade drill bits when you're ready to drill.</p>
+                `,
+                supplies: ["Construction Adhesive", "Adhesive Brackets", "Diamond Drill Bits"]
+            },
+            {
+                id: 7,
+                title: "Gas stove vs induction stove – which is right for your kitchen?",
+                date: "October 18, 2024",
+                excerpt: "Both have pros and cons. Compare cost, performance, safety, and installation requirements before buying.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/Electrical-Equipment-595x397.png",
+                content: `
+                    <h2>Gas stove vs induction stove – which is right for your kitchen?</h2>
+                    <p>Upgrading your cooktop? Here's how gas and induction compare for Maldivian kitchens.</p>
+                    
+                    <h3>Gas Stoves</h3>
+                    <p><strong>Pros:</strong> Lower upfront cost, works during power outages, any cookware works, visual flame for heat control.</p>
+                    <p><strong>Cons:</strong> Requires gas connection or cylinder, risk of gas leaks, harder to clean, indoor air quality concerns.</p>
+                    
+                    <h3>Induction Stoves</h3>
+                    <p><strong>Pros:</strong> Faster heating (boils water in half the time), precise temperature control, cool to touch surface, easy to clean, more energy efficient, safer (no open flame).</p>
+                    <p><strong>Cons:</strong> Higher upfront cost, requires magnetic cookware (cast iron or stainless steel), doesn't work during power outages.</p>
+                    
+                    <h3>What About Regular Electric (Coil or Ceramic)?</h3>
+                    <p>Traditional electric stoves are the slowest to heat and cool. They're cheaper than induction but less efficient. We generally don't recommend them for new kitchens.</p>
+                    
+                    <h3>Our Recommendation</h3>
+                    <p>For most Maldivian homes, induction is the better choice if your budget allows. The safety benefits (no gas leak risk, cool surface) and efficiency make it worthwhile. If you experience frequent power outages or already have a gas connection, a gas stove remains a solid option.</p>
+                    
+                    <h3>Cookware Note</h3>
+                    <p>If switching to induction, test your existing pots with a magnet. If it sticks strongly, your cookware works. We stock induction-compatible cookware at both locations.</p>
+                `,
+                supplies: ["Induction Cooktop", "Induction-compatible Cookware", "Gas Stove", "LPG Cylinder"]
+            },
+            {
+                id: 8,
+                title: "Bathroom renovation on a budget: what to replace first",
+                date: "September 22, 2024",
+                excerpt: "A full bathroom renovation can be expensive. Here's how to prioritize for maximum impact on a limited budget.",
+                image: "https://selbymv.com/wp-content/uploads/2019/04/upvc-fittings-500x500.png",
+                content: `
+                    <h2>Bathroom renovation on a budget: what to replace first</h2>
+                    <p>Transform your bathroom without breaking the bank. Focus on these high-impact, low-cost changes first.</p>
+                    
+                    <h3>1. Replace the Faucet and Showerhead</h3>
+                    <p>A new faucet or showerhead instantly updates the look and feel of your bathroom. Modern designs use less water while providing better pressure. This is a DIY-friendly project that costs 200-500 MVR but looks like a much bigger investment.</p>
+                    
+                    <h3>2. Update Lighting</h3>
+                    <p>Swap outdated light fixtures for modern LED options. Better lighting makes the whole space look cleaner and more inviting. Look for fixtures with high color rendering (CRI 90+) for accurate makeup application.</p>
+                    
+                    <h3>3. Replace the Toilet Seat and Hardware</h3>
+                    <p>A new toilet seat, towel bars, and robe hooks cost very little but make the bathroom feel fresh and clean. Match finishes (chrome, matte black, brushed nickel) for a cohesive look.</p>
+                    
+                    <h3>4. Regrout Tiles</h3>
+                    <p>Dirty or cracked grout makes even new tile look old. Removing old grout and applying fresh grout costs under 200 MVR in supplies but takes a weekend. It's tedious but transforms the look.</p>
+                    
+                    <h3>5. Paint the Walls</h3>
+                    <p>A fresh coat of bathroom-specific paint (mold and moisture resistant) in a light, neutral color makes the space feel larger and cleaner. Don't forget to properly clean and prime first.</p>
+                    
+                    <h3>6. Add Storage</h3>
+                    <p>Over-toilet cabinets, corner shelves, or wall-mounted organizers reduce counter clutter. Less visual clutter makes the bathroom feel more spacious and calm.</p>
+                    
+                    <h3>What to Leave for Later</h3>
+                    <p>Complete tile replacement, moving plumbing locations, or changing the bathroom layout are expensive and disruptive. Save these for a full renovation when your budget is larger.</p>
+                    
+                    <h3>Get Supplies at Selby MV</h3>
+                    <p>Visit Selby Drive or Selby Star 1 for faucets, lighting, paint, grout, and bathroom accessories. Our staff can help you choose budget-friendly options that look premium.</p>
+                `,
+                supplies: ["Bathroom Faucet", "LED Bathroom Light", "Grout", "Bathroom Paint", "Towel Bars"]
+            }
+        ];
+
+        // Dhivehi translations for key phrases (placeholder - replace with actual Dhivehi when available)
+        const dhivehiPlaceholder = "މިއީ ދިވެހި ބަހުން ލިޔެވިފައިވާ ބައިތަކެކެވެ. ބްލޮގް ޕޯސްޓްތައް ދިވެހިން ނަކަލް ކުރެވޭނެ އެވެ. (This is a placeholder for Dhivehi language content.)";
+
+        // Function to render blog listing
+        function renderBlogListing() {
+            const grid = document.getElementById('blogGrid');
+            if (!grid) return;
+
+            let html = '';
+            for (const post of blogPosts) {
+                html += `
+                    <div class="blog-card" data-id="${post.id}">
+                        <div class="blog-image" style="background-image: url('${post.image}');"></div>
+                        <div class="blog-content">
+                            <div class="blog-date">${post.date}</div>
+                            <h2 class="blog-title">${post.title}</h2>
+                            <p class="blog-excerpt">${post.excerpt.substring(0, 120)}...</p>
+                            <a href="#" class="read-more" data-id="${post.id}">Read Full Guide →</a>
+                        </div>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+
+            // Attach event listeners
+            document.querySelectorAll('.read-more').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = parseInt(link.getAttribute('data-id'));
+                    showSinglePost(id);
+                });
+            });
+        }
+
+        // Function to show single post
+        function showSinglePost(postId) {
+            const post = blogPosts.find(p => p.id === postId);
+            if (!post) return;
+
+            // Generate supplies HTML
+            let suppliesHtml = '';
+            if (post.supplies && post.supplies.length > 0) {
+                suppliesHtml = `
+                    <div style="margin: 25px 0 20px; padding: 15px; background: #f9f9f9; border-radius: 8px;">
+                        <h3 style="margin-top: 0;">🛒 Supplies You'll Need</h3>
+                        <ul style="margin: 10px 0 0 20px;">
+                            ${post.supplies.map(item => `<li>${item}</li>`).join('')}
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 14px;"><strong>Available at:</strong> Selby Star 1 and Selby Drive</p>
+                    </div>
+                `;
+            }
+
+            const contentHtml = `
+                <div class="single-post-content">
+                    ${post.content}
+                    ${suppliesHtml}
+                    <a href="contact-us.html" class="contact-supplies-btn">📞 Contact us for supplies →</a>
+                    <a href="https://api.whatsapp.com/send?phone=9603323002&text=I'm%20interested%20in%20supplies%20for%20${encodeURIComponent(post.title)}" target="_blank" class="contact-supplies-btn" style="background: #25D366; margin-left: 10px;">💬 WhatsApp us</a>
+                </div>
+            `;
+
+            document.getElementById('singlePostContent').innerHTML = contentHtml;
+            document.getElementById('blogGrid').style.display = 'none';
+            document.getElementById('singlePostView').classList.add('active');
+
+            // Scroll to top of post
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Function to show blog listing
+        function showBlogListing() {
+            document.getElementById('blogGrid').style.display = 'grid';
+            document.getElementById('singlePostView').classList.remove('active');
+        }
+
+        // Event listeners
+        document.getElementById('backToBlog')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            showBlogListing();
+        });
+
+        // Initialize page
+        renderBlogListing();
+    </script>
+</body>
+</html>
