@@ -2,6 +2,7 @@
  * SELBY MV - MAIN JAVASCRIPT
  * Handles: loader, hero slider, mobile menu, scroll-to-top,
  *          animations, form submission, WhatsApp links, touch fixes
+ *          Cookie consent popup
  */
 (function () {
     'use strict';
@@ -207,11 +208,39 @@
         }, { passive: true });
     }
 
+    // ==================== COOKIE CONSENT POPUP ====================
+    function initCookieConsent() {
+        var popup = document.getElementById('cookiePopup');
+        if (!popup) return;
+        
+        // Check if user already accepted
+        if (localStorage.getItem('selby_cookies_accepted') === 'true') {
+            popup.style.display = 'none';
+        }
+        
+        // Accept button handler
+        var acceptBtn = document.getElementById('acceptCookiesBtn');
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('selby_cookies_accepted', 'true');
+                popup.style.display = 'none';
+            });
+        }
+    }
+
     // ==================== INIT ====================
     function init() {
-        removeLoader(); initHeroSlider(); initMobileMenu(); initScrollTop();
-        initScrollAnimations(); initContactForm(); initStickyHeader(); fixWhatsAppLinks();
+        removeLoader(); 
+        initHeroSlider(); 
+        initMobileMenu(); 
+        initScrollTop();
+        initScrollAnimations(); 
+        initContactForm(); 
+        initStickyHeader(); 
+        fixWhatsAppLinks();
+        initCookieConsent();
     }
+    
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
     else init();
 })();
