@@ -1767,3 +1767,51 @@ body.cookie-modal-active {
         width: 100%;
     }
 }
+
+/* ==================== FIX HEADER OVERLAP & CONSISTENCY ==================== */
+
+/* Ensure masthead is stacked properly */
+.masthead {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    width: 100%;
+}
+
+/* Top bar - always dark, never overlapping */
+.top-bar {
+    background: var(--dark);
+    color: var(--white);
+    font-size: 13px;
+    position: relative;
+    z-index: 1001;
+    width: 100%;
+}
+
+/* Header bar - white background, below top bar */
+.header-bar {
+    background: var(--white);
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Force background on mobile menu when open */
+.main-navigation.open {
+    background: var(--white);
+}
+
+/* Ensure no unwanted transparency */
+.main-nav .menu-item a {
+    background: transparent;
+}
+
+/* Fix for pages that might have missing background */
+.masthead,
+.top-bar,
+.header-bar,
+.main-navigation {
+    background: inherit;
+}
