@@ -2,7 +2,7 @@
  * SELBY MV - MAIN JAVASCRIPT
  * Handles: loader, hero slider, mobile menu, scroll-to-top,
  *          animations, form submission, WhatsApp links, touch fixes
- *          Cookie consent popup (blocking modal, demo mode)
+ *          Cookie consent modal (shows once per session, blocks until choice)
  */
 (function () {
     'use strict';
@@ -208,20 +208,19 @@
         }, { passive: true });
     }
 
-    // ==================== COOKIE CONSENT MODAL (Blocking, Demo Mode) ====================
+    // ==================== COOKIE CONSENT MODAL (ONCE PER SESSION) ====================
     function initCookieConsent() {
-        // Check if already accepted or rejected in this session?
-        // For demo: always show, no localStorage persistence.
-        // Remove any existing modal first
-        var existingOverlay = document.getElementById('cookieModalOverlay');
-        if (existingOverlay) existingOverlay.remove();
+        // Check if user already made a choice in this session (tab/window)
+        var choice = sessionStorage.getItem('selby_cookies_choice');
+        if (choice === 'accepted' || choice === 'rejected') {
+            return; // Don't show the modal again during this session
+        }
 
         // Create modal overlay
         var overlay = document.createElement('div');
         overlay.id = 'cookieModalOverlay';
         overlay.className = 'cookie-modal-overlay';
         
-        // Create popup content
         overlay.innerHTML = `
             <div class="cookie-popup">
                 <p>🍪 We use cookies to improve your experience and to show you relevant offers. By using our site, you accept our <a href="#">Privacy Policy</a>. This website requires cookie consent to continue.</p>
@@ -235,7 +234,7 @@
         document.body.appendChild(overlay);
         document.body.classList.add('cookie-modal-active');
         
-        // Disable scrolling on the body
+        // Disable scrolling on body
         var originalOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
         
@@ -243,10 +242,8 @@
         var acceptBtn = document.getElementById('cookieAccept');
         if (acceptBtn) {
             acceptBtn.addEventListener('click', function() {
-                // For demo: just remove modal and allow interaction
-                removeModal();
-                // Optionally store in sessionStorage for this session only
                 sessionStorage.setItem('selby_cookies_choice', 'accepted');
+                removeModal();
             });
         }
         
@@ -254,9 +251,8 @@
         var rejectBtn = document.getElementById('cookieReject');
         if (rejectBtn) {
             rejectBtn.addEventListener('click', function() {
-                removeModal();
                 sessionStorage.setItem('selby_cookies_choice', 'rejected');
-                // Optionally: you can show a message or redirect
+                removeModal();
             });
         }
         
@@ -266,10 +262,9 @@
             document.body.style.overflow = originalOverflow;
         }
         
-        // Prevent clicks on the overlay from closing (must use buttons)
+        // Prevent closing by clicking the overlay (must use buttons)
         overlay.addEventListener('click', function(e) {
             if (e.target === overlay) {
-                // Do nothing - force choice via buttons only
                 e.stopPropagation();
             }
         });
@@ -285,7 +280,7 @@
         initContactForm(); 
         initStickyHeader(); 
         fixWhatsAppLinks();
-        initCookieConsent();   // This will always show the modal on every page load
+        initCookieConsent();   // Shows modal once per session (tab)
     }
     
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
