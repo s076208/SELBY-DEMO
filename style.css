@@ -1815,3 +1815,34 @@ body.cookie-modal-active {
 .main-navigation {
     background: inherit;
 }
+
+/* Force header consistency on all pages */
+.masthead,
+.top-bar,
+.header-bar,
+.main-navigation {
+    background: none; /* reset */
+}
+
+.top-bar {
+    background: var(--dark) !important;
+    position: relative !important;
+    z-index: 1001 !important;
+}
+
+.header-bar {
+    background: var(--white) !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.main-navigation {
+    background: transparent !important;
+}
+
+/* Ensure no overlap */
+.masthead {
+    display: flex;
+    flex-direction: column;
+}
